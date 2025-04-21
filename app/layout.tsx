@@ -1,9 +1,11 @@
 import type { Metadata, Viewport } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
+import { ThemeProvider } from 'next-themes'
+
 import './globals.css'
 import Header from './header'
 import Footer from './footer'
-import { ThemeProvider } from 'next-themes'
+import GoogleAnalytics from '@/components/GoogleAnalytics'
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -37,6 +39,9 @@ export default function RootLayout({
       <body
         className={`${geist.variable} ${geistMono.variable} bg-white tracking-tight antialiased dark:bg-zinc-950`}
       >
+        <GoogleAnalytics
+          GA_MEASUREMENT_ID={String(process.env.GOOGLE_ANALYTICS_ID)}
+        />
         <ThemeProvider
           enableSystem={true}
           attribute="class"
