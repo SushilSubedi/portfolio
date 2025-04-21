@@ -39,7 +39,9 @@ export default function RootLayout({
       <body
         className={`${geist.variable} ${geistMono.variable} bg-white tracking-tight antialiased dark:bg-zinc-950`}
       >
-        <GoogleAnalytics GA_MEASUREMENT_ID="G-XXXXXXXXXX" />
+        <GoogleAnalytics
+          GA_MEASUREMENT_ID={String(process.env.GOOGLE_ANALYTICS_ID)}
+        />
         <ThemeProvider
           enableSystem={true}
           attribute="class"
