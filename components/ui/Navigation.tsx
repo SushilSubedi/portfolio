@@ -52,7 +52,7 @@ const Navigation = () => {
     >
       <div
         className={cn(
-          'hidden items-center font-medium md:flex',
+          'hidden items-center font-normal md:flex',
           isHome ? 'gap-12 text-2xl' : 'gap-10 text-xl md:justify-center',
         )}
       >
