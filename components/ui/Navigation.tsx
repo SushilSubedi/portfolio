@@ -6,6 +6,8 @@ import { useEffect, useRef, useState } from 'react'
 import { Menu, X } from 'lucide-react'
 
 import { cn } from '@/lib/utils'
+import Image from 'next/image'
+import logo from '@/public/icons/logo.png'
 
 const links = [
   { href: '/projects', label: 'Projects', key: '5' },
@@ -18,6 +20,7 @@ const Navigation = () => {
   const pathname = usePathname()
   const [isOpen, setIsOpen] = useState(false)
   const dropdownRef = useRef<HTMLDivElement | null>(null)
+  const isHome = pathname === '/'
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -44,13 +47,16 @@ const Navigation = () => {
 
   return (
     <nav className="relative z-50 flex w-full items-center justify-between">
-      {/* Logo/Name */}
       <div className="flex-shrink-0">
         <Link
           href="/"
           className="text-xl font-bold tracking-tight text-zinc-900 transition-colors hover:text-zinc-700 dark:text-zinc-100 dark:hover:text-zinc-300"
         >
-          Sushil Subedi
+          {isHome ? (
+            <span>Sushil Subedi</span>
+          ) : (
+            <Image src={logo} alt="Sushil Logo" height="50" width="50" />
+          )}
         </Link>
       </div>
 

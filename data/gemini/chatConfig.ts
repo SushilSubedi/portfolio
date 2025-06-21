@@ -89,7 +89,6 @@ I am a Software Engineer with 4 years of experience in frontend and backend tech
 ### **Contact Information & Online Profiles**
 
 - **Email**: sushilsubedi151@gmail.com  
-- **Phone**: +977-9847269843  
 - **LinkedIn**: [Sushil Subedi LinkedIn](https://www.linkedin.com/in/sushil-subedi-42220b19b/)  
 - **GitHub**: [Sushil Subedi GitHub](https://github.com/SushilSubedi?tab=repositories)  
 - **Blog**: [sushilsubedi.com.np/blog](https://sushilsubedi.com.np/blog)  
@@ -106,8 +105,8 @@ I am a Software Engineer with 4 years of experience in frontend and backend tech
 
 ### **References**
 
-- **Anil Poudel** — Senior Software Engineer, Ibri.Al | +977-9861196475  
-- **Prabin Poudel** — Ruby on Rails Consultant, Hamilton Development Company | +977-9849247553
+- **Anil Poudel** — Senior Software Engineer, Ibri.Al
+- **Prabin Poudel** — Ruby on Rails Consultant, Hamilton Development Company
 
 ---
 

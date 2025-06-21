@@ -20,15 +20,11 @@ export default function Home() {
               {/* Left side - Hero content */}
               <div className="space-y-6 text-center lg:text-left">
                 <div className="space-y-4">
-                  <h1
-                    className="animate-fade-in-up text-3xl font-bold tracking-tight text-zinc-900 sm:text-5xl lg:text-6xl dark:text-zinc-100 [animation-delay:0.2s]"
-                  >
+                  <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-5xl lg:text-6xl dark:text-zinc-100">
                     Hello, World!
                     <span className="inline-block animate-bounce">👨‍💻</span>
                   </h1>
-                  <p
-                    className="animate-fade-in-up text-base leading-7 text-zinc-600 sm:text-lg dark:text-zinc-400 [animation-delay:0.4s]"
-                  >
+                  <p className="text-base leading-7 text-zinc-600 sm:text-lg dark:text-zinc-400">
                     Full-stack developer crafting scalable solutions and elegant
                     user experiences.
                     <br />
@@ -38,9 +34,7 @@ export default function Home() {
                   </p>
                 </div>
 
-                <div
-                  className="animate-fade-in-up flex items-center justify-center space-x-6 text-sm text-zinc-500 lg:justify-start dark:text-zinc-400 [animation-delay:0.6s]"
-                >
+                <div className="flex items-center justify-center space-x-6 text-sm text-zinc-500 lg:justify-start dark:text-zinc-400">
                   <div className="flex items-center space-x-2">
                     <Briefcase className="h-4 w-4" />
                     <span>Available for projects</span>
@@ -54,9 +48,7 @@ export default function Home() {
               </div>
 
               {/* Right side - ChatBot */}
-              <div
-                className="animate-fade-in-up flex items-center justify-center [animation-delay:0.8s]"
-              >
+              <div className="flex items-center justify-center">
                 <div className="w-full max-w-lg">
                   <ChatBot />
                 </div>
