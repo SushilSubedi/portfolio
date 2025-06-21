@@ -25,8 +25,8 @@ export default function Home() {
                     <span className="inline-block animate-bounce">👨‍💻</span>
                   </h1>
                   <p className="text-base leading-7 text-zinc-600 sm:text-lg dark:text-zinc-400">
-                    Full-stack developer crafting scalable solutions and elegant
-                    user experiences.
+                    I&apos;m a passionate developer crafting scalable solutions
+                    and elegant user experiences.
                     <br />
                     <span className="font-medium text-zinc-700 dark:text-zinc-300">
                       Let's build something amazing together.

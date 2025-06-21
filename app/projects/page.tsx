@@ -1,6 +1,6 @@
 'use client'
 
-import { Github, Link as ExternalLink, ImageIcon } from 'lucide-react'
+import { ExternalLink, ImageIcon } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
 import { motion } from 'framer-motion'

@@ -179,9 +179,9 @@ const AboutPage = () => {
         >
           <h2 className="text-3xl font-bold">Guiding Philosophy</h2>
           <blockquote className="mx-auto mt-6 max-w-2xl text-xl text-zinc-600 italic dark:text-zinc-400">
-            "Simplicity is the ultimate sophistication. I strive to write clean,
-            elegant code that solves complex problems in the most
-            straightforward way."
+            &quot;Simplicity is the ultimate sophistication. I strive to write
+            clean, elegant code that solves complex problems in the most
+            straightforward way.&quot;
           </blockquote>
         </motion.section>
       </div>

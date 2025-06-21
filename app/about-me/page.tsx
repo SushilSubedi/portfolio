@@ -42,7 +42,7 @@ const AboutMePage = () => {
       {/* Brief Summary */}
       <section className="mb-12">
         <p className="text-lg text-zinc-600 dark:text-zinc-400">
-          Hi, I'm Sushil! I'm a software engineer with over 4 years of
+          Hi, I&apos;m Sushil! I&apos;m a software engineer with over 4 years of
           experience building scalable and user-friendly web applications. My
           expertise lies in frontend technologies like React and Next.js, as
           well as backend development with Ruby on Rails. I have a strong

@@ -67,7 +67,7 @@ export default function Contact() {
       } else {
         setStatus(data.error || 'Failed to send message.')
       }
-    } catch (error) {
+    } catch {
       setStatus('Something went wrong. Please try again later.')
     }
 
@@ -82,8 +82,8 @@ export default function Contact() {
             Get in Touch
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-zinc-600 dark:text-zinc-400">
-            I'd love to hear from you! Fill out the form and I’ll get back to
-            you shortly.
+            I&apos;d love to hear from you! Fill out the form and I’ll get back
+            to you shortly.
           </p>
         </div>
 
@@ -194,7 +194,8 @@ export default function Contact() {
               Thank you!
             </h3>
             <p className="mt-2 text-zinc-600 dark:text-zinc-400">
-              Your message has been successfully sent. I'll be in touch soon.
+              Your message has been successfully sent. Let&apos;s build
+              something amazing together!
             </p>
           </div>
         )}
