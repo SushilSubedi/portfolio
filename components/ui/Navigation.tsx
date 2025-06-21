@@ -68,6 +68,7 @@ const Navigation = () => {
                 'text-zinc-400 dark:text-zinc-500',
                 isActive &&
                   'leading-1 font-semibold text-black dark:text-white',
+                isHome ? 'text-2xl' : 'text-base',
               )}
             >
               {label}
@@ -101,7 +102,7 @@ const Navigation = () => {
                   href={href}
                   onClick={() => setIsOpen(false)}
                   className={cn(
-                    'text-base font-medium transition-colors',
+                    'text-sm font-medium transition-colors',
                     'text-zinc-600 dark:text-zinc-300',
                     'hover:text-black dark:hover:text-white',
                     isActive && 'font-semibold text-black dark:text-white',

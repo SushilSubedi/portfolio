@@ -17,14 +17,9 @@ export default function Header() {
       <div className="flex justify-between px-6 py-2">
         <Link
           href="/"
-          className="text-lg font-semibold text-zinc-800 dark:text-white"
+          className="w-full text-lg font-semibold text-zinc-800 dark:text-white"
         >
-          <Image
-            src="/icons/sushil-logo.png"
-            alt="portfolio home page"
-            width={100}
-            height={60}
-          />
+          My Home
         </Link>
         <Navigation />
       </div>

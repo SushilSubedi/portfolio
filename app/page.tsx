@@ -3,7 +3,7 @@ import Navigation from '@/components/ui/Navigation'
 
 export default function Home() {
   return (
-    <div className="flex flex-col md:justify-center">
+    <div className="flex w-full flex-col items-center md:justify-center">
       <header className="flex justify-end md:justify-center">
         <Navigation />
       </header>
