@@ -3,7 +3,21 @@
 import Link from 'next/link'
 import { useState } from 'react'
 
-const BlogPostCard = ({ post }: { post: any }) => {
+const BlogPostCard = ({
+  post,
+}: {
+  post: {
+    title: string
+    image?: string | null
+    description: string
+    category?: string
+    date?: string
+    readingTime?: number
+    uid: string
+    author?: string
+    content?: string
+  }
+}) => {
   const [imageError, setImageError] = useState(false)
 
   const imagePath = post.image || ''

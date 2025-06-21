@@ -114,14 +114,6 @@ export default function PostInteractions({
             </a>
           ))}
       </div>
-
-      {/* Note about Instagram */}
-      {isHydrated && (
-        <p className="text-xs text-slate-500 dark:text-slate-400">
-          Note: Instagram doesn't support direct link sharing. The Instagram
-          button opens the app where you can share manually.
-        </p>
-      )}
     </div>
   )
 }

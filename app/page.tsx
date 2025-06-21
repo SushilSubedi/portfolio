@@ -29,7 +29,7 @@ export default function Home() {
                     and elegant user experiences.
                     <br />
                     <span className="font-medium text-zinc-700 dark:text-zinc-300">
-                      Let's build something amazing together.
+                      Let&apos;s build something amazing together.
                     </span>
                   </p>
                 </div>

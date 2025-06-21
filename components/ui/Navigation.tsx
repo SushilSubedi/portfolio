@@ -102,7 +102,7 @@ const Navigation = () => {
       {isOpen && (
         <div
           ref={dropdownRef}
-          className="animate-fade-in absolute top-14 right-0 mt-2 w-full rounded-xl border border-zinc-200 bg-white/95 p-4 ring-1 shadow-xl shadow-zinc-800/5 ring-zinc-900/5 backdrop-blur-sm md:hidden dark:border-zinc-700 dark:bg-zinc-800/95 dark:shadow-zinc-900/20 dark:ring-white/10"
+          className="animate-fade-in absolute top-14 right-0 mt-2 w-full rounded-xl border border-zinc-200 bg-white/95 p-4 shadow-xl shadow-zinc-800/5 ring-zinc-900/5 backdrop-blur-sm md:hidden dark:border-zinc-700 dark:bg-zinc-800/95 dark:shadow-zinc-900/20 dark:ring-white/10"
         >
           <div className="flex flex-col space-y-2">
             {links.map(({ href, label, key }) => {
