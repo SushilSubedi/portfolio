@@ -1,3 +1,3 @@
-import { Part, FormProps, MessageBox } from './chatbot'
+import { Part, FormProps, MessageBoxProps } from './chatbot'
 
-export type { Part, FormProps, MessageBox as MessageBoxProps }
+export type { Part, FormProps, MessageBoxProps }

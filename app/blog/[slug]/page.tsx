@@ -10,11 +10,10 @@ const components = {
   Cover,
 }
 
-// This component no longer needs to be async
 export default async function BlogPost({
   params,
 }: {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }) {
   const { slug } = await params
   const post = BLOG_POSTS.find((p) => p.uid === slug)
