@@ -16,7 +16,6 @@ const links = [
 
 const Navigation = () => {
   const pathname = usePathname()
-  const isHome = pathname === '/'
   const [isOpen, setIsOpen] = useState(false)
   const dropdownRef = useRef<HTMLDivElement | null>(null)
 
@@ -44,18 +43,19 @@ const Navigation = () => {
   const toggleMenu = () => setIsOpen(!isOpen)
 
   return (
-    <nav
-      className={cn(
-        'relative z-50 flex w-full',
-        isHome ? 'justify-center' : 'justify-end',
-      )}
-    >
-      <div
-        className={cn(
-          'hidden items-center font-normal md:flex',
-          isHome ? 'gap-12 text-2xl' : 'gap-10 text-xl md:justify-center',
-        )}
-      >
+    <nav className="relative z-50 flex w-full items-center justify-between">
+      {/* Logo/Name */}
+      <div className="flex-shrink-0">
+        <Link
+          href="/"
+          className="text-xl font-bold tracking-tight text-zinc-900 transition-colors hover:text-zinc-700 dark:text-zinc-100 dark:hover:text-zinc-300"
+        >
+          Sushil Subedi
+        </Link>
+      </div>
+
+      {/* Desktop Links */}
+      <div className="hidden items-center gap-x-8 md:flex">
         {links.map(({ href, label, key }) => {
           const isActive = pathname === href
           return (
@@ -63,37 +63,42 @@ const Navigation = () => {
               key={key}
               href={href}
               className={cn(
-                'transition-colors duration-200',
-                'hover:text-zinc-800 dark:hover:text-zinc-200',
-                'text-zinc-400 dark:text-zinc-500',
-                isActive &&
-                  'leading-1 font-semibold text-black dark:text-white',
-                isHome ? 'text-2xl' : 'text-base',
+                'relative px-1 py-2 text-base font-medium transition-colors duration-200',
+                'text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100',
+                isActive && 'text-zinc-900 dark:text-zinc-100',
               )}
             >
               {label}
+              {isActive && (
+                <span className="absolute inset-x-0 bottom-0 h-0.5 bg-zinc-900 dark:bg-zinc-100" />
+              )}
             </Link>
           )
         })}
       </div>
-      <button
-        className="flex w-full cursor-pointer items-center justify-end p-2 md:hidden"
-        onClick={toggleMenu}
-        aria-label="Toggle navigation"
-      >
-        {isOpen ? (
-          <X className="h-6 w-6 text-zinc-700 dark:text-zinc-300" />
-        ) : (
-          <Menu className="h-6 w-6 text-zinc-700 dark:text-zinc-300" />
-        )}
-      </button>
 
+      {/* Mobile Menu Button */}
+      <div className="flex items-center md:hidden">
+        <button
+          className="flex cursor-pointer items-center justify-center rounded-md p-2 transition-colors hover:bg-zinc-100 dark:hover:bg-zinc-800"
+          onClick={toggleMenu}
+          aria-label="Toggle navigation"
+        >
+          {isOpen ? (
+            <X className="h-6 w-6 text-zinc-700 dark:text-zinc-300" />
+          ) : (
+            <Menu className="h-6 w-6 text-zinc-700 dark:text-zinc-300" />
+          )}
+        </button>
+      </div>
+
+      {/* Mobile Menu Dropdown */}
       {isOpen && (
         <div
           ref={dropdownRef}
-          className="absolute top-8 right-0 mt-2 w-[calc(100vw-2em)] rounded-xl border border-zinc-100 bg-white p-4 ring-1 shadow-lg shadow-zinc-200/50 ring-zinc-100 md:hidden md:w-56 dark:border-zinc-800 dark:bg-zinc-900 dark:shadow-zinc-900/50 dark:ring-zinc-800"
+          className="animate-fade-in absolute top-14 right-0 mt-2 w-full rounded-xl border border-zinc-200 bg-white/95 p-4 ring-1 shadow-xl shadow-zinc-800/5 ring-zinc-900/5 backdrop-blur-sm md:hidden dark:border-zinc-700 dark:bg-zinc-800/95 dark:shadow-zinc-900/20 dark:ring-white/10"
         >
-          <div className="flex flex-col space-y-4">
+          <div className="flex flex-col space-y-2">
             {links.map(({ href, label, key }) => {
               const isActive = pathname === href
               return (
@@ -102,10 +107,11 @@ const Navigation = () => {
                   href={href}
                   onClick={() => setIsOpen(false)}
                   className={cn(
-                    'text-sm font-medium transition-colors',
-                    'text-zinc-600 dark:text-zinc-300',
-                    'hover:text-black dark:hover:text-white',
-                    isActive && 'font-semibold text-black dark:text-white',
+                    'rounded-md px-4 py-3 text-base font-medium transition-all duration-200',
+                    'text-zinc-700 dark:text-zinc-300',
+                    'hover:bg-zinc-100 hover:text-zinc-900 dark:hover:bg-zinc-700 dark:hover:text-white',
+                    isActive &&
+                      'bg-zinc-100 font-semibold text-zinc-900 dark:bg-zinc-700 dark:text-white',
                   )}
                 >
                   {label}

@@ -5,7 +5,10 @@ export type Part = {
   text: string
 }
 
-export type MessageBox = { messages: Message[]; isAIMessageLoading: Boolean }
+export type MessageBoxProps = {
+  messages: Message[]
+  isAIMessageLoading: boolean
+}
 
 export type FormProps = {
   input: string

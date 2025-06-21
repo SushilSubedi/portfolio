@@ -15,12 +15,6 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 w-full bg-white/90 py-2 shadow-sm backdrop-blur-lg dark:bg-zinc-900/80">
       <div className="flex justify-between px-6 py-2">
-        <Link
-          href="/"
-          className="w-full text-lg font-semibold text-zinc-800 dark:text-white"
-        >
-          My Home
-        </Link>
         <Navigation />
       </div>
     </header>

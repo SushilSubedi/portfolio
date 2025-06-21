@@ -21,7 +21,7 @@ export default function Page() {
   }
 
   return (
-    <div className="mt-8">
+    <div className="w-full">
       <MessageBox
         messages={messages}
         isAIMessageLoading={status === 'submitted'}
