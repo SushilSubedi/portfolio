@@ -3,33 +3,68 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
-import { Briefcase, Code, Database, GitMerge, Server, Wind } from 'lucide-react'
+import {
+  BookOpen,
+  Briefcase,
+  Code,
+  Coffee,
+  Database,
+  GitMerge,
+  Heart,
+  Mountain,
+  Server,
+  Sparkles,
+  Wind,
+} from 'lucide-react'
+
+import myImage from '@/public/icons/sushil.jpg'
 
 const experiences = [
   {
-    role: 'Senior Software Engineer',
-    company: 'Innovatech Solutions',
-    period: '2021 - Present',
+    role: 'Software Engineer',
+    company: 'Truemark Technology',
+    period: '2021 - 2024',
     description:
-      'Led development of a high-traffic e-commerce platform. Mentored junior developers and improved code quality by 30% through TDD.',
+      'Led development of scalable web apps using React & Rails, mentored junior developers, and automated CI/CD pipelines.',
   },
   {
-    role: 'Frontend Developer',
-    company: 'Digital Creations Agency',
-    period: '2019 - 2021',
+    role: 'Associate Software Engineer',
+    company: 'Truemark Technology',
+    period: '2020 - 2021',
     description:
-      'Developed responsive websites using React and Redux, collaborating with UI/UX designers to create pixel-perfect interfaces.',
+      'Enhanced features based on senior feedback, implemented code quality tools, and contributed to the hiring process.',
   },
   {
-    role: 'Junior Web Developer',
-    company: 'Web Wizards Co.',
-    period: '2017 - 2019',
+    role: 'React Developer Intern',
+    company: 'Influence',
+    period: '2020',
     description:
-      'Assisted in building websites with HTML, CSS, and JavaScript, gaining experience in Git and agile methodologies.',
+      'Began my career by refactoring and enhancing a product website, gaining hands-on experience with modern web development.',
   },
 ]
 
-const skills = [
+const corePrinciples = [
+  {
+    icon: <Sparkles className="h-8 w-8 text-zinc-500" />,
+    title: 'Elegant Solutions',
+    description:
+      'I believe in the power of simplicity. My goal is to write clean, efficient, and maintainable code that solves complex problems in the most straightforward way.',
+  },
+  {
+    icon: <Heart className="h-8 w-8 text-zinc-500" />,
+    title: 'User-Centric Design',
+    description:
+      'Technology should serve people. I focus on building intuitive, accessible, and engaging user experiences that make a real difference.',
+  },
+  {
+    icon: <BookOpen className="h-8 w-8 text-zinc-500" />,
+    title: 'Continuous Growth',
+    description:
+      'The tech world is always evolving, and so am I. I am a lifelong learner, constantly exploring new tools, techniques, and ideas to stay at the cutting edge.',
+  },
+]
+
+const toolkit = [
   {
     name: 'React & Next.js',
     icon: <Code className="h-8 w-8 text-zinc-500" />,
@@ -37,7 +72,7 @@ const skills = [
       'Crafting dynamic, server-rendered, and static web applications.',
   },
   {
-    name: 'Node.js & Express',
+    name: 'Node.js & Rails',
     icon: <Server className="h-8 w-8 text-zinc-500" />,
     description:
       'Building scalable and efficient server-side applications and APIs.',
@@ -70,8 +105,8 @@ const skills = [
 
 const AboutPage = () => {
   return (
-    <div className="bg-zinc-50 text-zinc-800 dark:bg-zinc-900 dark:text-zinc-200">
-      <div className="mx-auto max-w-4xl px-4 py-20 sm:px-6 lg:px-8">
+    <div className="text-zinc-800 dark:text-zinc-200">
+      <div className="mx-auto max-w-5xl px-4 py-20 sm:px-6 lg:px-8">
         {/* Intro Section */}
         <motion.section
           className="text-center"
@@ -79,30 +114,45 @@ const AboutPage = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <Image
-            src="/avatar.png"
-            alt="Sushil Subedi"
-            width={160}
-            height={160}
-            className="mx-auto rounded-full shadow-2xl"
-          />
-          <h1 className="mt-8 text-5xl font-bold tracking-tight sm:text-6xl">
-            Sushil Subedi
+          <div className="relative mx-auto h-40 w-40 rounded-full bg-zinc-200 shadow-2xl dark:bg-zinc-700">
+            <Image
+              src={myImage}
+              alt="Sushil Subedi"
+              width={160}
+              height={160}
+              className="rounded-full"
+            />
+          </div>
+          <h1 className="mt-8 bg-gradient-to-r from-zinc-800 to-zinc-600 bg-clip-text text-5xl font-bold tracking-tight text-transparent sm:text-6xl dark:from-zinc-200 dark:to-zinc-400">
+            I Build Things for the Web.
           </h1>
           <p className="mt-4 text-xl text-zinc-600 dark:text-zinc-400">
-            A Software Engineer Crafting Digital Experiences
-          </p>
-          <p className="mx-auto mt-6 max-w-2xl text-lg">
-            My journey in software development is a story of passion for
-            problem-solving and a commitment to creating software that is not
-            only functional but also a joy to use.
+            A Story of Code, Curiosity, and Coffee.
           </p>
         </motion.section>
 
+        {/* The Story Section */}
+        <section className="mt-24 text-center">
+          <h2 className="mb-8 bg-gradient-to-r from-zinc-800 to-zinc-600 bg-clip-text text-4xl font-bold text-transparent dark:from-zinc-200 dark:to-zinc-400">
+            The Origin Story
+          </h2>
+          <p className="mx-auto max-w-3xl text-lg leading-relaxed text-zinc-700 dark:text-zinc-300">
+            My journey into the world of technology wasn&apos;t a straight
+            line—it was a winding path fueled by a deep-seated curiosity for how
+            things work. From tinkering with my first computer to writing my
+            first &quot;Hello, World!&quot;, I was hooked. I discovered a
+            passion for turning abstract ideas into tangible, digital
+            experiences that could solve real-world problems. This passion is
+            what drives me every day to learn, to build, and to innovate.
+          </p>
+        </section>
+
         {/* Journey Timeline Section */}
         <section className="relative mt-24">
-          <h2 className="mb-16 text-center text-4xl font-bold">My Journey</h2>
-          <div className="absolute top-0 left-1/2 h-full w-0.5 -translate-x-1/2 bg-zinc-200 dark:bg-zinc-700" />
+          <h2 className="mb-16 bg-gradient-to-r from-zinc-800 to-zinc-600 bg-clip-text text-center text-4xl font-bold text-transparent dark:from-zinc-200 dark:to-zinc-400">
+            My Professional Journey
+          </h2>
+          <div className="absolute top-20 left-1/2 h-[90%] w-0.5 -translate-x-1/2 bg-zinc-200 dark:bg-zinc-700" />
           {experiences.map((exp, index) => (
             <motion.div
               key={index}
@@ -119,7 +169,7 @@ const AboutPage = () => {
               >
                 <div className="w-5/12">
                   <div
-                    className={`rounded-lg border border-zinc-200 bg-white p-6 shadow-lg dark:border-zinc-700 dark:bg-zinc-800 ${
+                    className={`rounded-lg border border-zinc-200 bg-white/30 p-6 shadow-lg backdrop-blur-sm dark:border-zinc-700 dark:bg-zinc-800/30 ${
                       index % 2 === 0 ? 'text-left' : 'text-right'
                     }`}
                   >
@@ -144,14 +194,45 @@ const AboutPage = () => {
           ))}
         </section>
 
-        {/* My Toolkit Section */}
+        {/* Core Principles Section */}
         <section className="mt-24">
-          <h2 className="mb-16 text-center text-4xl font-bold">My Toolkit</h2>
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {skills.map((skill, index) => (
+          <h2 className="mb-16 bg-gradient-to-r from-zinc-800 to-zinc-600 bg-clip-text text-center text-4xl font-bold text-transparent dark:from-zinc-200 dark:to-zinc-400">
+            My Core Principles
+          </h2>
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+            {corePrinciples.map((principle, index) => (
               <motion.div
                 key={index}
-                className="rounded-lg border border-zinc-200 bg-white p-6 text-center shadow-lg transition-transform hover:-translate-y-1 dark:border-zinc-700 dark:bg-zinc-800"
+                className="rounded-lg border border-zinc-200 bg-white/30 p-8 text-center shadow-lg backdrop-blur-sm transition-transform hover:-translate-y-2 dark:border-zinc-700 dark:bg-zinc-800/30"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-zinc-100 dark:bg-zinc-700">
+                  {principle.icon}
+                </div>
+                <h3 className="mt-6 text-2xl font-semibold">
+                  {principle.title}
+                </h3>
+                <p className="mt-4 text-zinc-600 dark:text-zinc-400">
+                  {principle.description}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+
+        {/* My Toolkit Section */}
+        <section className="mt-24">
+          <h2 className="mb-16 bg-gradient-to-r from-zinc-800 to-zinc-600 bg-clip-text text-center text-4xl font-bold text-transparent dark:from-zinc-200 dark:to-zinc-400">
+            My Digital Toolkit
+          </h2>
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {toolkit.map((skill, index) => (
+              <motion.div
+                key={index}
+                className="rounded-lg border border-zinc-200 bg-white/30 p-6 text-center shadow-lg backdrop-blur-sm transition-transform hover:-translate-y-1 dark:border-zinc-700 dark:bg-zinc-800/30"
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true, amount: 0.5 }}
@@ -169,7 +250,7 @@ const AboutPage = () => {
           </div>
         </section>
 
-        {/* Philosophy Section */}
+        {/* Beyond the Code Section */}
         <motion.section
           className="mt-24 text-center"
           initial={{ opacity: 0 }}
@@ -177,12 +258,38 @@ const AboutPage = () => {
           viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 1 }}
         >
-          <h2 className="text-3xl font-bold">Guiding Philosophy</h2>
-          <blockquote className="mx-auto mt-6 max-w-2xl text-xl text-zinc-600 italic dark:text-zinc-400">
-            &quot;Simplicity is the ultimate sophistication. I strive to write
-            clean, elegant code that solves complex problems in the most
-            straightforward way.&quot;
-          </blockquote>
+          <h2 className="bg-gradient-to-r from-zinc-800 to-zinc-600 bg-clip-text text-4xl font-bold text-transparent dark:from-zinc-200 dark:to-zinc-400">
+            Beyond the Code
+          </h2>
+          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-zinc-700 dark:text-zinc-300">
+            When I&apos;m not at my keyboard, I believe in living a balanced
+            life. You can find me exploring the mountains, cheering for my
+            favorite football team, or simply enjoying a quiet moment with a
+            good cup of coffee and my dog, Kookie.
+          </p>
+          <div className="mt-8 flex flex-wrap justify-center gap-4">
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className="flex cursor-pointer items-center space-x-2 rounded-full bg-zinc-100 px-4 py-2 text-zinc-700 transition-colors hover:bg-zinc-200 dark:bg-zinc-800 dark:text-zinc-300 dark:hover:bg-zinc-700"
+            >
+              <Mountain className="h-5 w-5" />
+              <span>Travel & Hiking</span>
+            </motion.div>
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className="flex cursor-pointer items-center space-x-2 rounded-full bg-zinc-100 px-4 py-2 text-zinc-700 transition-colors hover:bg-zinc-200 dark:bg-zinc-800 dark:text-zinc-300 dark:hover:bg-zinc-700"
+            >
+              <Heart className="h-5 w-5" />
+              <span>Fitness & Sports</span>
+            </motion.div>
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className="flex cursor-pointer items-center space-x-2 rounded-full bg-zinc-100 px-4 py-2 text-zinc-700 transition-colors hover:bg-zinc-200 dark:bg-zinc-800 dark:text-zinc-300 dark:hover:bg-zinc-700"
+            >
+              <Coffee className="h-5 w-5" />
+              <span>Coffee Enthusiast</span>
+            </motion.div>
+          </div>
         </motion.section>
       </div>
     </div>

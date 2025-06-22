@@ -13,7 +13,7 @@ import whiteLogo from '@/public/icons/logo-white.png'
 
 const links = [
   { href: '/projects', label: 'Projects', key: '5' },
-  { href: '/about-me', label: 'About', key: '2' },
+  { href: '/about', label: 'About', key: '2' },
   { href: '/blog', label: 'Blog', key: '3' },
   { href: '/contact-me', label: 'Contact', key: '4' },
 ]

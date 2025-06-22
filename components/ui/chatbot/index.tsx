@@ -31,12 +31,6 @@ export default function Page() {
     <div
       className={`transition-all duration-300 ${isExpanded ? 'fixed inset-4 z-50 w-[98%] max-w-none' : 'relative w-full'}`}
     >
-      {isExpanded && (
-        <div
-          className="absolute inset-0 bg-black/20 backdrop-blur-sm"
-          onClick={toggleExpanded}
-        />
-      )}
       <div
         className={`relative rounded-lg border bg-white shadow-lg transition-all duration-300 dark:bg-zinc-900 ${isExpanded ? 'border-zinc-300 shadow-2xl dark:border-zinc-600' : 'border-zinc-200 dark:border-zinc-700'}`}
       >
