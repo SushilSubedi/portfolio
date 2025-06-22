@@ -11,8 +11,8 @@ export default function Header() {
   if (isHome) return null
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-white/90 py-2 shadow-sm backdrop-blur-lg dark:bg-zinc-800/80">
-      <div className="flex justify-between px-6 py-2">
+    <header className="sticky top-0 z-50 w-full bg-white/90 py-1 shadow-sm backdrop-blur-lg dark:bg-zinc-800/80">
+      <div className="flex justify-between px-6">
         <Navigation />
       </div>
     </header>

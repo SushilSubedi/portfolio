@@ -4,10 +4,12 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
 import { Menu, X } from 'lucide-react'
+import { useTheme } from 'next-themes'
 
 import { cn } from '@/lib/utils'
 import Image from 'next/image'
 import logo from '@/public/icons/logo.png'
+import whiteLogo from '@/public/icons/logo-white.png'
 
 const links = [
   { href: '/projects', label: 'Projects', key: '5' },
@@ -21,6 +23,12 @@ const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false)
   const dropdownRef = useRef<HTMLDivElement | null>(null)
   const isHome = pathname === '/'
+  const { resolvedTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -55,7 +63,12 @@ const Navigation = () => {
           {isHome ? (
             <span>Sushil Subedi</span>
           ) : (
-            <Image src={logo} alt="Sushil Logo" height="50" width="50" />
+            <Image
+              src={mounted && resolvedTheme === 'dark' ? logo : whiteLogo}
+              alt="Sushil Logo"
+              height="60"
+              width="60"
+            />
           )}
         </Link>
       </div>
