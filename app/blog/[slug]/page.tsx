@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 import Cover from '@/components/mdx/Cover'
 import PostInteractions from '@/components/PostInteractions'
-import { BLOG_POSTS } from '@/data/data'
+import { BLOG_POSTS } from '@/data/blogs'
 
 const components = {
   Cover,

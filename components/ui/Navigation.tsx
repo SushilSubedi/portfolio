@@ -61,7 +61,16 @@ const Navigation = () => {
           className="text-xl font-bold tracking-tight text-zinc-900 transition-colors hover:text-zinc-700 dark:text-zinc-100 dark:hover:text-zinc-300"
         >
           {isHome ? (
-            <span>Sushil Subedi</span>
+            <>
+              <Image
+                src={mounted && resolvedTheme === 'dark' ? logo : whiteLogo}
+                alt="Sushil Logo"
+                height="60"
+                width="60"
+                className="mr-2 inline-block"
+              />
+              <span>Sushil Subedi</span>
+            </>
           ) : (
             <Image
               src={mounted && resolvedTheme === 'dark' ? logo : whiteLogo}

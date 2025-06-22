@@ -3,7 +3,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import React, { useState, useMemo } from 'react'
 import BlogPostCard from '@/components/BlogPostCard'
-import { BLOG_POSTS } from '@/data/data'
+import { BLOG_POSTS } from '@/data/blogs'
 
 const POSTS_PER_PAGE = 6 // Or any number you prefer
 

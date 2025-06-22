@@ -5,7 +5,15 @@ import ReactMarkdown from 'react-markdown'
 
 import { MessageBoxProps, Part } from '@/constants/types'
 
-function MessageBox({ messages, isAIMessageLoading }: MessageBoxProps) {
+interface ExtendedMessageBoxProps extends MessageBoxProps {
+  isExpanded?: boolean
+}
+
+function MessageBox({
+  messages,
+  isAIMessageLoading,
+  isExpanded = false,
+}: ExtendedMessageBoxProps) {
   const scrollContainerRef = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
@@ -18,7 +26,9 @@ function MessageBox({ messages, isAIMessageLoading }: MessageBoxProps) {
   }, [messages, isAIMessageLoading])
 
   return (
-    <div className="h-[40vh] min-h-[300px]">
+    <div
+      className={`transition-all duration-300 ${isExpanded ? 'h-[70vh] min-h-[500px]' : 'h-[42vh] min-h-[300px]'}`}
+    >
       <div
         className="h-full overflow-y-auto rounded-lg border border-zinc-200 bg-white p-4 shadow-sm dark:border-zinc-700 dark:bg-zinc-800"
         ref={scrollContainerRef}
