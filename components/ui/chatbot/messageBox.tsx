@@ -18,7 +18,7 @@ function MessageBox({ messages, isAIMessageLoading }: MessageBoxProps) {
   }, [messages, isAIMessageLoading])
 
   return (
-    <div className="h-[35vh] min-h-[300px]">
+    <div className="h-[40vh] min-h-[300px]">
       <div
         className="h-full overflow-y-auto rounded-lg border border-zinc-200 bg-white p-4 shadow-sm dark:border-zinc-700 dark:bg-zinc-800"
         ref={scrollContainerRef}

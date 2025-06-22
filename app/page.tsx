@@ -5,7 +5,7 @@ import Navigation from '@/components/ui/Navigation'
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex h-full flex-col">
       <header className="relative w-full">
         <div className="absolute inset-0" />
         <div className="relative mx-auto max-w-6xl px-4 py-4 sm:px-6 lg:px-8">
