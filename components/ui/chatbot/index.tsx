@@ -23,26 +23,10 @@ export default function Page() {
     }
   }
 
-  const toggleExpanded = () => {
-    setIsExpanded(!isExpanded)
-  }
-
   return (
     <div
-      className={`rounded-l shadow-lg transition-all duration-300 ${isExpanded ? 'fixed inset-4 z-50 h-full w-[98%] max-w-none shadow-2xl' : 'w-full'}`}
+      className={`relative rounded-l shadow-lg transition-all duration-300 ${isExpanded ? 'fixed inset-4 z-50 h-full w-[98%] max-w-none shadow-2xl' : 'w-full'}`}
     >
-      <button
-        onClick={toggleExpanded}
-        className="absolute top-2 right-2 z-10 rounded-md p-1 text-zinc-500 transition-colors hover:bg-zinc-100 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-300"
-        aria-label={isExpanded ? 'Minimize chat' : 'Expand chat'}
-      >
-        {isExpanded ? (
-          <Minimize2 className="h-4 w-4 cursor-pointer" />
-        ) : (
-          <Maximize2 className="h-4 w-4 cursor-pointer" />
-        )}
-      </button>
-
       <MessageBox
         messages={messages}
         isAIMessageLoading={status === 'submitted'}
