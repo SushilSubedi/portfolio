@@ -1,14 +1,23 @@
+'use client'
+
+import { useState, useEffect } from 'react'
 import { Briefcase, MapPin } from 'lucide-react'
 
 import ChatBot from '@/components/ui/chatbot'
 import Navigation from '@/components/ui/Navigation'
 
 export default function Home() {
+  const [isClient, setIsClient] = useState(false)
+
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
+
   return (
     <div className="flex h-full flex-col">
       <header className="relative w-full">
         <div className="absolute inset-0" />
-        <div className="relative mx-auto max-w-6xl px-4 py-4 sm:px-6 lg:px-8">
+        <div className="max-w-8xl relative mx-auto px-4 py-2">
           <Navigation />
         </div>
       </header>
@@ -50,7 +59,7 @@ export default function Home() {
               {/* Right side - ChatBot */}
               <div className="flex items-center justify-center">
                 <div className="w-full max-w-lg">
-                  <ChatBot />
+                  {isClient ? <ChatBot /> : null}
                 </div>
               </div>
             </div>

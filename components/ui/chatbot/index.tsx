@@ -29,45 +29,32 @@ export default function Page() {
 
   return (
     <div
-      className={`transition-all duration-300 ${isExpanded ? 'fixed inset-4 z-50 w-[98%] max-w-none' : 'relative w-full'}`}
+      className={`relative rounded-l shadow-lg transition-all duration-300 ${isExpanded ? 'fixed inset-4 z-50 h-full w-[98%] max-w-none shadow-2xl' : 'w-full'}`}
     >
-      <div
-        className={`relative rounded-lg border bg-white shadow-lg transition-all duration-300 dark:bg-zinc-900 ${isExpanded ? 'border-zinc-300 shadow-2xl dark:border-zinc-600' : 'border-zinc-200 dark:border-zinc-700'}`}
+      <button
+        onClick={toggleExpanded}
+        className="absolute top-2 right-2 z-10 rounded-md p-1 text-zinc-500 transition-colors hover:bg-zinc-100 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-300"
+        aria-label={isExpanded ? 'Minimize chat' : 'Expand chat'}
       >
-        {/* Header with expand/collapse button */}
-        <div className="flex items-center justify-between border-b border-zinc-200 p-3 dark:border-zinc-700">
-          <h3 className="text-sm font-medium text-zinc-900 dark:text-zinc-100">
-            Chat with SushilAI
-          </h3>
-          <button
-            onClick={toggleExpanded}
-            className="rounded-md p-1 text-zinc-500 transition-colors hover:bg-zinc-100 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-300"
-            aria-label={isExpanded ? 'Minimize chat' : 'Expand chat'}
-          >
-            {isExpanded ? (
-              <Minimize2 className="h-4 w-4 cursor-pointer" />
-            ) : (
-              <Maximize2 className="h-4 w-4 cursor-pointer" />
-            )}
-          </button>
-        </div>
+        {isExpanded ? (
+          <Minimize2 className="h-4 w-4 cursor-pointer" />
+        ) : (
+          <Maximize2 className="h-4 w-4 cursor-pointer" />
+        )}
+      </button>
 
-        {/* Chat content */}
-        <div className="p-4">
-          <MessageBox
-            messages={messages}
-            isAIMessageLoading={status === 'submitted'}
-            isExpanded={isExpanded}
-          />
-          <Form
-            handleSubmit={handleSubmit}
-            input={input}
-            handleInputChange={handleInputChange}
-            handleKeyDown={handleKeyDown}
-            status={status}
-          />
-        </div>
-      </div>
+      <MessageBox
+        messages={messages}
+        isAIMessageLoading={status === 'submitted'}
+        isExpanded={isExpanded}
+      />
+      <Form
+        handleSubmit={handleSubmit}
+        input={input}
+        handleInputChange={handleInputChange}
+        handleKeyDown={handleKeyDown}
+        status={status}
+      />
     </div>
   )
 }

@@ -3,7 +3,9 @@
 import React, { memo } from 'react'
 import { Send } from 'lucide-react'
 
-const Form: React.FC<any> = ({
+import { FormProps } from '@/constants/types/index'
+
+const Form: React.FC<FormProps> = ({
   input,
   handleInputChange,
   handleSubmit,

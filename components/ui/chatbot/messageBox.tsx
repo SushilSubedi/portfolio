@@ -3,7 +3,7 @@
 import React, { useEffect, useRef } from 'react'
 import ReactMarkdown from 'react-markdown'
 
-import { MessageBoxProps, Part } from '@/constants/types'
+import { MessageBoxProps, Part } from '@/constants/types/index'
 
 interface ExtendedMessageBoxProps extends MessageBoxProps {
   isExpanded?: boolean
