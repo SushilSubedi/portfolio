@@ -29,7 +29,7 @@ export default function Page() {
 
   return (
     <div
-      className={`relative rounded-l shadow-lg transition-all duration-300 ${isExpanded ? 'fixed inset-4 z-50 h-full w-[98%] max-w-none shadow-2xl' : 'w-full'}`}
+      className={`rounded-l shadow-lg transition-all duration-300 ${isExpanded ? 'fixed inset-4 z-50 h-full w-[98%] max-w-none shadow-2xl' : 'w-full'}`}
     >
       <button
         onClick={toggleExpanded}
