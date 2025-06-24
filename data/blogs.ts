@@ -13,92 +13,122 @@ export type BlogPost = {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
-    uid: 'exploring-the-intersection-of-design-ai-and-design-engineering',
-    title: 'Exploring the Intersection of Design, AI, and Design Engineering',
-    description: 'How AI is changing the way we design.',
-    category: 'AI',
-    date: '2024-06-01',
-    author: 'Sushil Subedi',
-    readingTime: 7,
-    image:
-      '/images/exploring-the-intersection-of-design-ai-and-design-engineering.jpg',
-    content: `
-<Cover
-  src="https://cdn.cosmos.so/affd4b79-e848-4dfd-bd42-5f2c4a847365?format=jpeg"
-  alt="Image from the movie Alien - from cosmos.com"
-  caption="cosmos.com"
-  width={1200}
-  height={675}
-/>
-
-Design and artificial intelligence (AI) are increasingly intertwined, driving innovation across industries. As technology evolves, the role of design engineering is more critical than ever, bridging creativity and functionality.
-
----
-
-## The Evolving Role of AI in Design
-
-AI is no longer just a backend tool—it’s becoming an active collaborator in the creative process. From generating design ideas to optimizing layouts, AI offers endless possibilities. For instance:
-
-- **Generative Design**: AI algorithms can generate thousands of design variations based on constraints, helping designers explore ideas faster.
-- **User Experience Optimization**: AI analyzes user behavior to suggest improvements, enabling data-driven design decisions.
-- **Automation**: Repetitive tasks like resizing assets or formatting layouts can be automated, freeing up designers for more strategic work.
-
----
-
-## Design Engineering: The Glue Between Creativity and Execution
-
-Design engineering ensures that the gap between creative vision and technical execution is seamless. It combines the artistry of design with the precision of engineering.
-
-> "Good design is as little design as possible." — Dieter Rams
-
-### Further Reading
-
-- [Designing for AI](https://example.com/designing-for-ai)
-- [The Future of Design Systems](https://example.com/future-design-systems)
-- [Ethical AI Guidelines](https://example.com/ethical-ai)
-    `,
-  },
-  {
-    uid: 'why-i-left-my-job-to-start-my-own-company',
-    title: 'Why I Left My Job to Start My Own Company',
+    uid: 'create-gitlab-pr-template',
+    title: 'Create GitLab PR Template in 4 Simple Steps',
     description:
-      'A deep dive into my decision to leave my job and start my own company.',
-    category: 'Career',
-    date: '2024-05-15',
-    author: 'Sushil Subedi',
-    readingTime: 7,
-    image: '',
-    content: `
-      # Why I Left My Job to Start My Own Company
-      Starting my own company was a challenging but rewarding decision...
-    `,
-  },
-  {
-    uid: 'building-performant-react-apps',
-    title: 'Building Performant React Apps',
-    description: 'Tips and techniques for optimizing React applications.',
-    category: 'Development',
-    date: '2024-04-20',
-    author: 'Sushil Subedi',
-    readingTime: 6,
-    image: '',
-    content: `
-      # Building Performant React Apps
-      Performance is crucial for modern web applications. In this post, we explore...
-    `,
-  },
-  {
-    uid: 'design-systems-for-scale',
-    title: 'Design Systems for Scale',
-    description: 'How to create and maintain design systems for large teams.',
-    category: 'Design',
-    date: '2024-03-10',
+      'Learn how to create standardized pull request templates in GitLab to improve team collaboration and save time.',
+    category: 'GitLab',
+    date: '2024-07-01',
     author: 'Sushil Subedi',
     readingTime: 8,
-    image: '', // No image, will show SVG
+    image: '',
+    link: 'https://dev.to/sushilsubedi/create-gitlab-pr-template-5gmp',
     content: `
-      # Design Systems for Scale
-      Design systems help teams build consistent and scalable products...
+For any company projects or GitLab repository, we need to make sure all the processes to contribute should be standardized. So, maintaining a proper pull request standard is an important way. It will save time and energy for you and your team members.
+
+It also helps new team members be able to show the standard and easily onboard themselves to the team. The best part of creating a Pull Request (Merge Request) template in GitLab is we can update it anytime and it can be configured in just 5 steps.
+
+---
+
+## Steps to create a PR template in GitLab:
+
+### 1. Create a folder \`.gitlab/merge_request_templates\` in your project root:
+
+Navigate to your project root and create a folder name as \`.gitlab\` then we also need to add another folder inside the \`.gitlab\` as \`merge_request_templates\`.
+
+**NOTE:** We need to create a \`.md\` file and name of the file should be same name of the template you want it to appear in your GitLab repository.
+
+We can see that I have created a file name called \`default.md\` because I want to have a template name as **default**.
+
+### 2. Update default.md:
+
+Now, let's update the content inside the \`default.md\` as below:
+
+\`\`\`markdown
+## Trello Card Link:
+
+- Link of a Trello card (we use [Trello](https://trello.com) for Project Management) which was assigned for completing the feature.
+
+## Tasks Done: (list of tasks completed)
+
+- What did you complete in this PR? Mention a list of them
+
+## Tasks Remaining: (List of tasks remaining to be implemented)
+
+- What is remaining to be implemented in this PR? Mention a list of them 
+
+## Steps to test feature:
+- How can we test the feature we implemented in this PR? You could mention steps to test it.
+
+## Screenshots:
+
+(if your changes has any UI updates, include screenshot of the changes)
+\`\`\`
+
+As I want my fellow developers to add [Trello](https://trello.com) card link assigned to them, add what they have completed, remaining, how can we test it and screenshots if possible.
+
+This is the template format we use in [Truemark Technology](https://www.truemark.dev/) which helps the person who is reviewing the PR know what feature they should be reviewing, link to feature description if they have any confusions and what feature is implemented in this PR.
+
+### 3. Commit and push:
+
+Let's commit the code and push the change to our default branch which in our case is \`develop\`.
+
+\`\`\`bash
+git add .
+git commit -m "create new template"
+git push origin develop
+\`\`\`
+
+### 4. Create a new branch to verify new template:
+
+Let's follow below steps to verify new template:
+
+- Checkout to a branch called \`check-template\`:
+  \`\`\`bash
+  git checkout -b check-template
+  \`\`\`
+
+- Create a dummy file called \`test.txt\` and add some content:
+  \`\`\`bash
+  echo "This is a test content for checking my new PR template in GitLab" >> test.txt
+  \`\`\`
+
+- Add new changes and commit:
+  \`\`\`bash
+  git add .
+  git commit -m "Added test.txt to test PR template in GitLab"
+  git push origin check-template
+  \`\`\`
+
+### 5. Create a merge request:
+
+#### Choose a template:
+
+Let's create a merge request and set the target branch to \`develop\` branch.
+
+**Note:** Make sure we have set default branch as develop.
+
+To set the default branch from **master** to **develop**, follow these steps:
+- Select **Repository** from **Settings**
+- Select **develop** from the list of branches and click on **Save Changes**
+
+We need to create a merge request by selecting \`Merge Requests\` and click on \`New Merge Request\`. After that we need to select from the template list.
+
+As we can see, **default** as our template name.
+
+#### Edit the template:
+
+In this step, we will update the selected template with our actual PR information, then click **Create Merge Request**.
+
+✅ We have successfully created a merge request using our template! 🎉🎉🎉
+
+---
+
+## Conclusion:
+
+I hope this article helps to create a standard format for your team. Thank you so much for reading my blog! I really appreciate it! 👏
+
+> Read the full article with images on [dev.to](https://dev.to/sushilsubedi/create-gitlab-pr-template-5gmp)
     `,
   },
 ]

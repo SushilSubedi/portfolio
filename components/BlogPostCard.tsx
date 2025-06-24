@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { useState } from 'react'
 
 const BlogPostCard = ({
@@ -21,7 +22,7 @@ const BlogPostCard = ({
   const [imageError, setImageError] = useState(false)
 
   const imagePath = post.image || ''
-  const showImage = imagePath && !imageError
+  const showImage = imagePath && !imageError && imagePath.trim() !== ''
 
   return (
     <Link
@@ -32,36 +33,42 @@ const BlogPostCard = ({
       <div className="group h-full min-w-[260px] overflow-hidden rounded-lg border border-zinc-200 bg-white shadow-md transition-all duration-300 hover:shadow-xl dark:border-zinc-700 dark:bg-zinc-800">
         <div className="relative flex h-52 w-full items-center justify-center overflow-hidden bg-zinc-100 dark:bg-zinc-700">
           {showImage ? (
-            <img
+            <Image
               src={imagePath}
               alt={post.title}
-              className="h-full w-full transform object-cover transition-transform duration-500 group-hover:scale-105"
+              fill
+              className="transform object-cover transition-transform duration-500 group-hover:scale-105"
               onError={() => setImageError(true)}
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              priority={false}
+              unoptimized={imagePath.startsWith('http')}
             />
           ) : (
-            <svg
-              className="h-12 w-12 text-zinc-400 dark:text-zinc-500"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <rect
-                x="3"
-                y="3"
-                width="18"
-                height="18"
-                rx="2"
-                strokeWidth={1.5}
-              />
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={1.5}
-                d="M8 16l3-3 2 2 3-4"
-              />
-              <circle cx="9" cy="9" r="1.5" />
-            </svg>
+            <div className="flex h-full w-full items-center justify-center">
+              <svg
+                className="h-12 w-12 text-zinc-400 dark:text-zinc-500"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <rect
+                  x="3"
+                  y="3"
+                  width="18"
+                  height="18"
+                  rx="2"
+                  strokeWidth={1.5}
+                />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={1.5}
+                  d="M8 16l3-3 2 2 3-4"
+                />
+                <circle cx="9" cy="9" r="1.5" />
+              </svg>
+            </div>
           )}
         </div>
 
