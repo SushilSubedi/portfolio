@@ -2,33 +2,40 @@ export const projects = [
   {
     title: 'GangstaBet',
     description:
-      'A blockchain-based sports betting platform with NFT characters. Worked as frontend engineer to develop the user interface using React and Redux, integrating with smart contracts.',
+      'A blockchain-based sports betting platform with NFT characters. Developed the user interface using React and Redux, integrating seamlessly with smart contracts to deliver a smooth betting experience.',
+    role: 'Frontend Engineer',
     techStack: ['React', 'Redux', 'Node.js', 'Blockchain'],
     liveUrl: 'https://gangstabet.io/',
+    company: {
+      name: 'Truemark',
+      url: 'https://www.truemark.dev/',
+    },
     image: null,
   },
   {
     title: 'Stay Connected',
     description:
-      'A real-time admin dashboard for managing user profiles, call logs, and system configurations using React, Redux, and Bootstrap.',
+      'A comprehensive real-time communication platform with separate interfaces for admins and agents. Built dashboards for managing user profiles, call logs, and system configurations with live updates and intuitive navigation.',
+    role: 'Frontend Engineer',
     techStack: ['React', 'Redux', 'Bootstrap', 'Node.js'],
     liveUrl: 'https://sc.dk/',
+    company: {
+      name: 'Truemark',
+      url: 'https://www.truemark.dev/',
+    },
     image: null,
   },
   {
     title: 'Leave Management System',
     description:
-      'An employee leave tracking system with real-time notifications and an intuitive dashboard for leave requests, built with Ruby on Rails.',
+      'A complete employee leave tracking solution featuring real-time notifications, approval workflows, and comprehensive dashboards. Designed and implemented both frontend interfaces and backend APIs for seamless leave management.',
+    role: 'Full Stack Engineer',
     techStack: ['Ruby on Rails', 'PostgreSQL', 'Redis'],
     liveUrl: 'https://www.leavebalance.com/',
-    image: null,
-  },
-  {
-    title: 'Customer Support Dashboard',
-    description:
-      'A customizable customer support dashboard designed to handle service, sales, support, and collections across voice and chat channels.',
-    techStack: ['React', 'Node.js', 'Docker', 'Redis'],
-    liveUrl: 'https://www.support-dashboard.com',
+    company: {
+      name: 'Truemark',
+      url: 'https://www.truemark.dev/',
+    },
     image: null,
   },
 ]
