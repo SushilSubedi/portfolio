@@ -2,17 +2,17 @@ export const projects = [
   {
     title: 'GangstaBet',
     description:
-      'A blockchain-based sports betting platform with NFT characters. Developed features such as real-time bet tracking and integrated cryptocurrency payments.',
-    techStack: ['React', 'Redux', 'Node.js', 'Blockchain', 'CI/CD'],
-    liveUrl: 'https://www.gangstabet.com',
+      'A blockchain-based sports betting platform with NFT characters. Worked as frontend engineer to develop the user interface using React and Redux, integrating with smart contracts.',
+    techStack: ['React', 'Redux', 'Node.js', 'Blockchain'],
+    liveUrl: 'https://gangstabet.io/',
     image: null,
   },
   {
-    title: 'PBX Cloud Admin Panel',
+    title: 'Stay Connected',
     description:
       'A real-time admin dashboard for managing user profiles, call logs, and system configurations using React, Redux, and Bootstrap.',
     techStack: ['React', 'Redux', 'Bootstrap', 'Node.js'],
-    liveUrl: 'https://www.pbxcloud.com/admin',
+    liveUrl: 'https://sc.dk/',
     image: null,
   },
   {
@@ -20,7 +20,7 @@ export const projects = [
     description:
       'An employee leave tracking system with real-time notifications and an intuitive dashboard for leave requests, built with Ruby on Rails.',
     techStack: ['Ruby on Rails', 'PostgreSQL', 'Redis'],
-    liveUrl: 'https://www.leave-system.com',
+    liveUrl: 'https://www.leavebalance.com/',
     image: null,
   },
   {
