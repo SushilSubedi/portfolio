@@ -114,7 +114,7 @@ const ProjectsPage = () => {
                   className="inline-flex items-center gap-2 text-sm font-medium text-zinc-700 transition-colors hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-zinc-100"
                 >
                   <ExternalLink size={16} />
-                  <span>View Live Project</span>
+                  <span>View Live</span>
                 </Link>
               </div>
             </div>

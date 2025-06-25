@@ -66,7 +66,7 @@ export default function BlogListClient({ posts }: BlogListClientProps) {
               setSearchQuery(e.target.value)
               setCurrentPage(1)
             }}
-            className="w-full rounded-md border border-zinc-300 bg-white px-4 py-2.5 pr-10 text-zinc-900 shadow-sm focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 focus:outline-none dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-100 dark:focus:border-zinc-600 dark:focus:ring-zinc-600"
+            className="w-full rounded-md border border-zinc-200 bg-white px-4 py-2.5 pr-10 text-zinc-900 shadow-sm focus:border-zinc-400 focus:ring-1 focus:ring-zinc-400 focus:outline-none dark:border-zinc-600 dark:bg-zinc-800 dark:text-zinc-100 dark:focus:border-zinc-500 dark:focus:ring-zinc-500"
           />
           <svg
             className="absolute top-1/2 right-3 h-5 w-5 -translate-y-1/2 text-zinc-400 dark:text-zinc-500"
@@ -90,7 +90,7 @@ export default function BlogListClient({ posts }: BlogListClientProps) {
               setSelectedCategory(e.target.value)
               setCurrentPage(1)
             }}
-            className="w-full appearance-none rounded-md border border-zinc-300 bg-white px-4 py-2.5 pr-8 text-zinc-900 shadow-sm focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 focus:outline-none dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-100 dark:focus:border-zinc-600 dark:focus:ring-zinc-600"
+            className="w-full appearance-none rounded-md border border-zinc-200 bg-white px-4 py-2.5 pr-8 text-zinc-900 shadow-sm focus:border-zinc-400 focus:ring-1 focus:ring-zinc-400 focus:outline-none dark:border-zinc-600 dark:bg-zinc-800 dark:text-zinc-100 dark:focus:border-zinc-500 dark:focus:ring-zinc-500"
           >
             {categories.map((category) => (
               <option key={category} value={category}>
@@ -130,7 +130,7 @@ export default function BlogListClient({ posts }: BlogListClientProps) {
               <button
                 onClick={() => handlePageChange(currentPage - 1)}
                 disabled={currentPage === 1}
-                className="relative inline-flex items-center rounded-md border border-zinc-300 bg-white px-4 py-2 text-sm font-medium text-zinc-700 hover:bg-zinc-50 disabled:cursor-not-allowed disabled:opacity-50 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-300 dark:hover:bg-zinc-700"
+                className="relative inline-flex items-center rounded-md border border-zinc-200 bg-white px-4 py-2 text-sm font-medium text-zinc-700 hover:bg-zinc-50 disabled:cursor-not-allowed disabled:opacity-50 dark:border-zinc-600 dark:bg-zinc-800 dark:text-zinc-300 dark:hover:bg-zinc-700"
               >
                 Previous
               </button>
@@ -141,8 +141,8 @@ export default function BlogListClient({ posts }: BlogListClientProps) {
                   onClick={() => handlePageChange(number)}
                   className={`relative inline-flex items-center rounded-md border px-4 py-2 text-sm font-medium ${
                     currentPage === number
-                      ? 'border-zinc-500 bg-zinc-500 text-white dark:border-zinc-600 dark:bg-zinc-600'
-                      : 'border-zinc-300 bg-white text-zinc-700 hover:bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-300 dark:hover:bg-zinc-700'
+                      ? 'border-zinc-400 bg-zinc-500 text-white dark:border-zinc-500 dark:bg-zinc-600'
+                      : 'border-zinc-200 bg-white text-zinc-700 hover:bg-zinc-50 dark:border-zinc-600 dark:bg-zinc-800 dark:text-zinc-300 dark:hover:bg-zinc-700'
                   }`}
                 >
                   {number}
@@ -152,7 +152,7 @@ export default function BlogListClient({ posts }: BlogListClientProps) {
               <button
                 onClick={() => handlePageChange(currentPage + 1)}
                 disabled={currentPage === totalPages}
-                className="relative inline-flex items-center rounded-md border border-zinc-300 bg-white px-4 py-2 text-sm font-medium text-zinc-700 hover:bg-zinc-50 disabled:cursor-not-allowed disabled:opacity-50 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-300 dark:hover:bg-zinc-700"
+                className="relative inline-flex items-center rounded-md border border-zinc-200 bg-white px-4 py-2 text-sm font-medium text-zinc-700 hover:bg-zinc-50 disabled:cursor-not-allowed disabled:opacity-50 dark:border-zinc-600 dark:bg-zinc-800 dark:text-zinc-300 dark:hover:bg-zinc-700"
               >
                 Next
               </button>

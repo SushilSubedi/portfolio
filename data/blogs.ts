@@ -1,44 +1,65 @@
 export type BlogPost = {
   title: string
   description: string
+  excerpt?: string
   link?: string
   uid: string
+  slug?: string
   content: string
   category?: string
+  tags?: string[]
   date?: string
-  author?: string
+  dateFormatted?: string
+  updatedAt?: string
   readingTime?: number
+  readingLevel?: 'Beginner' | 'Intermediate' | 'Advanced'
   image?: string
+  ogImage?: string
+  published?: boolean
+  featured?: boolean
+  author?: {
+    name: string
+    avatar?: string
+    bio?: string
+    url?: string
+  }
+  series?: string
 }
 
 export const BLOG_POSTS: BlogPost[] = [
   {
     uid: 'create-gitlab-pr-template',
-    title: 'Create GitLab PR Template in 4 Simple Steps',
+    title: 'Create GitLab PR Template in 5 Simple Steps',
     description:
       'Learn how to create standardized pull request templates in GitLab to improve team collaboration and save time.',
     category: 'GitLab',
     date: '2024-07-01',
-    author: 'Sushil Subedi',
+    dateFormatted: 'July 1, 2024',
     readingTime: 8,
-    image: '',
+    image: '/images/blogs/create_template.png',
     link: 'https://dev.to/sushilsubedi/create-gitlab-pr-template-5gmp',
     content: `
 For any company projects or GitLab repository, we need to make sure all the processes to contribute should be standardized. So, maintaining a proper pull request standard is an important way. It will save time and energy for you and your team members.
 
 It also helps new team members be able to show the standard and easily onboard themselves to the team. The best part of creating a Pull Request (Merge Request) template in GitLab is we can update it anytime and it can be configured in just 5 steps.
 
+<BlogImage 
+  src="/images/blogs/merge-request-folder.png" 
+  alt="GitLab folder structure showing .gitlab/merge_request_templates"
+  caption="Creating the .gitlab/\`merge_request_templates\` folder structure"
+/>
+
 ---
 
 ## Steps to create a PR template in GitLab:
 
-### 1. Create a folder \`.gitlab/merge_request_templates\` in your project root:
+### 1. Create a folder \`.gitlab/\`merge_request_templates\` in your project root:
 
 Navigate to your project root and create a folder name as \`.gitlab\` then we also need to add another folder inside the \`.gitlab\` as \`merge_request_templates\`.
 
 **NOTE:** We need to create a \`.md\` file and name of the file should be same name of the template you want it to appear in your GitLab repository.
 
-We can see that I have created a file name called \`default.md\` because I want to have a template name as **default**.
+We can see that I have created a file name called \`default.md\` because I want to have a template name as \`default\`.
 
 ### 2. Update default.md:
 
@@ -114,7 +135,13 @@ To set the default branch from **master** to **develop**, follow these steps:
 
 We need to create a merge request by selecting \`Merge Requests\` and click on \`New Merge Request\`. After that we need to select from the template list.
 
-As we can see, **default** as our template name.
+As we can see, \`default\` as our template name.
+
+<BlogImage 
+  src="/images/blogs/default-pr.png" 
+  alt="GitLab merge request showing template selection"
+  caption="Selecting the PR template when creating a merge request"
+/>
 
 #### Edit the template:
 

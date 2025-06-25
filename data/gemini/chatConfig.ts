@@ -18,10 +18,8 @@ export const chatHistory = [
 - Testing: Jest, Cypress
 
 ## 🏢 **Current Role**
-**Software Engineer at Truemark Technology** (Jan 2021 - Dec 2024)
-- Mentors junior developers and leads technical initiatives
-- Builds scalable web applications and optimizes deployment workflows
-- Actively involved in hiring and team development
+**Full Stack Developer at U & J Enterprises** (April 2025 - present)
+- Building auction platform.
 
 ## 🚀 **Notable Projects**
 - **Stay Connected**: Admin dashboard for business operations

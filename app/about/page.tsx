@@ -41,7 +41,7 @@ const AboutPage = () => {
       <div className="mx-auto max-w-5xl px-4 py-20 sm:px-6 lg:px-8">
         {/* Intro Section */}
         <motion.section
-          className="text-center"
+          className="w-full text-center"
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -64,7 +64,7 @@ const AboutPage = () => {
         </motion.section>
 
         {/* The Story Section */}
-        <section className="mt-24 text-center">
+        <section className="mt-24 w-full text-center">
           <h2 className="mb-8 bg-gradient-to-r from-zinc-800 to-zinc-600 bg-clip-text text-3xl font-bold text-transparent sm:text-4xl dark:from-zinc-200 dark:to-zinc-400">
             The Origin Story
           </h2>
@@ -80,7 +80,7 @@ const AboutPage = () => {
         </section>
 
         {/* Journey Timeline Section */}
-        <section className="relative mt-24">
+        <section className="relative mt-24 w-full">
           <h2 className="mb-16 bg-gradient-to-r from-zinc-800 to-zinc-600 bg-clip-text text-center text-3xl font-bold text-transparent sm:text-4xl dark:from-zinc-200 dark:to-zinc-400">
             My Professional Journey
           </h2>
@@ -88,7 +88,7 @@ const AboutPage = () => {
           {experiences.map((exp, index) => (
             <motion.div
               key={index}
-              className="relative mb-12"
+              className="relative mb-12 w-full"
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.5 }}
@@ -127,15 +127,15 @@ const AboutPage = () => {
         </section>
 
         {/* Core Principles Section */}
-        <section className="mt-24">
+        <section className="mt-24 w-full">
           <h2 className="mb-16 bg-gradient-to-r from-zinc-800 to-zinc-600 bg-clip-text text-center text-3xl font-bold text-transparent sm:text-4xl dark:from-zinc-200 dark:to-zinc-400">
             My Core Principles
           </h2>
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+          <div className="grid w-full grid-cols-1 gap-8 md:grid-cols-3">
             {corePrinciples.map((principle, index) => (
               <motion.div
                 key={index}
-                className="rounded-lg border border-zinc-200 bg-white/30 p-8 text-center shadow-lg backdrop-blur-sm transition-transform hover:-translate-y-2 dark:border-zinc-700 dark:bg-zinc-800/30"
+                className="w-full rounded-lg border border-zinc-200 bg-white/30 p-8 text-center shadow-lg backdrop-blur-sm transition-transform hover:-translate-y-2 dark:border-zinc-700 dark:bg-zinc-800/30"
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.5 }}
@@ -156,15 +156,15 @@ const AboutPage = () => {
         </section>
 
         {/* My Toolkit Section */}
-        <section className="mt-24">
+        <section className="mt-24 w-full">
           <h2 className="mb-16 bg-gradient-to-r from-zinc-800 to-zinc-600 bg-clip-text text-center text-3xl font-bold text-transparent sm:text-4xl dark:from-zinc-200 dark:to-zinc-400">
             My Digital Toolkit
           </h2>
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid w-full grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
             {toolkit.map((skill, index) => (
               <motion.div
                 key={index}
-                className="rounded-lg border border-zinc-200 bg-white/30 p-6 text-center shadow-lg backdrop-blur-sm transition-transform hover:-translate-y-1 dark:border-zinc-700 dark:bg-zinc-800/30"
+                className="w-full rounded-lg border border-zinc-200 bg-white/30 p-6 text-center shadow-lg backdrop-blur-sm transition-transform hover:-translate-y-1 dark:border-zinc-700 dark:bg-zinc-800/30"
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true, amount: 0.5 }}
@@ -184,7 +184,7 @@ const AboutPage = () => {
 
         {/* Beyond the Code Section */}
         <motion.section
-          className="mt-24 text-center"
+          className="mt-24 w-full text-center"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, amount: 0.5 }}
@@ -197,7 +197,7 @@ const AboutPage = () => {
             When I&apos;m not at my keyboard, I believe in living a balanced
             life. You can find me exploring the mountains, cheering for my
             favorite football team, or simply enjoying a quiet moment with a
-            good cup of coffee and my dog, Kookie.
+            good cup of Chiya and my dog, Kookie.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <motion.div
