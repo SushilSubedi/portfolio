@@ -17,12 +17,6 @@ export type BlogPost = {
   ogImage?: string
   published?: boolean
   featured?: boolean
-  author?: {
-    name: string
-    avatar?: string
-    bio?: string
-    url?: string
-  }
   series?: string
 }
 
