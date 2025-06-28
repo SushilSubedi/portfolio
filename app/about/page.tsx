@@ -38,7 +38,7 @@ const getIcon = (iconName: string) => {
 const AboutPage = () => {
   return (
     <div className="text-zinc-800 dark:text-zinc-200">
-      <div className="mx-auto max-w-5xl px-4 py-20 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-5xl px-2 py-6 sm:px-6 sm:py-8 lg:px-8">
         {/* Intro Section */}
         <motion.section
           className="w-full text-center"
@@ -55,17 +55,19 @@ const AboutPage = () => {
               className="rounded-full"
             />
           </div>
-          <h1 className="mt-8 bg-gradient-to-r from-zinc-800 to-zinc-600 bg-clip-text text-4xl font-bold tracking-tight text-transparent sm:text-6xl dark:from-zinc-200 dark:to-zinc-400">
-            I Build Things for the Web.
-          </h1>
-          <p className="mt-4 text-lg text-zinc-600 sm:text-xl dark:text-zinc-400">
-            A Story of Code, Curiosity, and Chiya.
-          </p>
+          <div className="mt-8">
+            <h1 className="bg-gradient-to-r from-zinc-800 to-zinc-600 bg-clip-text pb-2 text-4xl leading-tight font-bold tracking-tight text-transparent sm:text-6xl dark:from-zinc-200 dark:to-zinc-400">
+              I Build Things for the Web.
+            </h1>
+            <p className="mt-4 text-lg text-zinc-600 sm:text-xl dark:text-zinc-400">
+              A Story of Code, Curiosity, and Chiya.
+            </p>
+          </div>
         </motion.section>
 
         {/* The Story Section */}
-        <section className="mt-24 w-full text-center">
-          <h2 className="mb-8 bg-gradient-to-r from-zinc-800 to-zinc-600 bg-clip-text text-3xl font-bold text-transparent sm:text-4xl dark:from-zinc-200 dark:to-zinc-400">
+        <section className="mt-12 w-full text-center sm:mt-20">
+          <h2 className="mb-8 bg-gradient-to-r from-zinc-800 to-zinc-600 bg-clip-text text-3xl font-bold text-transparent sm:mb-16 sm:text-4xl dark:from-zinc-200 dark:to-zinc-400">
             The Origin Story
           </h2>
           <p className="mx-auto max-w-3xl text-base leading-relaxed text-zinc-700 sm:text-lg dark:text-zinc-300">
@@ -80,11 +82,11 @@ const AboutPage = () => {
         </section>
 
         {/* Journey Timeline Section */}
-        <section className="relative mt-24 w-full">
-          <h2 className="mb-16 bg-gradient-to-r from-zinc-800 to-zinc-600 bg-clip-text text-center text-3xl font-bold text-transparent sm:text-4xl dark:from-zinc-200 dark:to-zinc-400">
+        <section className="relative mt-12 w-full sm:mt-20">
+          <h2 className="mb-8 bg-gradient-to-r from-zinc-800 to-zinc-600 bg-clip-text text-center text-3xl font-bold text-transparent sm:mb-16 sm:text-4xl dark:from-zinc-200 dark:to-zinc-400">
             My Professional Journey
           </h2>
-          <div className="absolute top-20 left-5 h-[90%] w-0.5 bg-zinc-200 md:left-1/2 md:-translate-x-1/2 dark:bg-zinc-700" />
+          <div className="absolute top-16 left-5 h-[90%] w-0.5 bg-zinc-200 sm:top-20 md:left-1/2 md:-translate-x-1/2 dark:bg-zinc-700" />
           {experiences.map((exp, index) => (
             <motion.div
               key={index}
@@ -127,8 +129,8 @@ const AboutPage = () => {
         </section>
 
         {/* Core Principles Section */}
-        <section className="mt-24 w-full">
-          <h2 className="mb-16 bg-gradient-to-r from-zinc-800 to-zinc-600 bg-clip-text text-center text-3xl font-bold text-transparent sm:text-4xl dark:from-zinc-200 dark:to-zinc-400">
+        <section className="mt-12 w-full sm:mt-20">
+          <h2 className="mb-8 bg-gradient-to-r from-zinc-800 to-zinc-600 bg-clip-text text-center text-3xl font-bold text-transparent sm:mb-16 sm:text-4xl dark:from-zinc-200 dark:to-zinc-400">
             My Core Principles
           </h2>
           <div className="grid w-full grid-cols-1 gap-8 md:grid-cols-3">
@@ -156,8 +158,8 @@ const AboutPage = () => {
         </section>
 
         {/* My Toolkit Section */}
-        <section className="mt-24 w-full">
-          <h2 className="mb-16 bg-gradient-to-r from-zinc-800 to-zinc-600 bg-clip-text text-center text-3xl font-bold text-transparent sm:text-4xl dark:from-zinc-200 dark:to-zinc-400">
+        <section className="mt-12 w-full sm:mt-20">
+          <h2 className="mb-8 bg-gradient-to-r from-zinc-800 to-zinc-600 bg-clip-text text-center text-3xl font-bold text-transparent sm:mb-16 sm:text-4xl dark:from-zinc-200 dark:to-zinc-400">
             My Digital Toolkit
           </h2>
           <div className="grid w-full grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
@@ -184,7 +186,7 @@ const AboutPage = () => {
 
         {/* Beyond the Code Section */}
         <motion.section
-          className="mt-24 w-full text-center"
+          className="mt-12 w-full text-center sm:mt-20"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, amount: 0.5 }}

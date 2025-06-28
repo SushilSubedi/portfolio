@@ -23,9 +23,9 @@ export default function Home() {
       </header>
 
       <main className="relative flex flex-1 flex-col">
-        <section className="flex flex-1 items-center justify-center px-4 sm:px-6 lg:px-8">
+        <section className="flex flex-1 items-center justify-center px-2 sm:px-6 lg:px-8">
           <div className="mx-auto w-full max-w-6xl">
-            <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:items-center">
+            <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:items-center">
               {/* Left side - Hero content */}
               <div className="space-y-6 text-center lg:text-left">
                 <div className="space-y-4">

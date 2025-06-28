@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 export default function SitemapPage() {
   return (
-    <main className="mx-auto max-w-4xl px-6 py-12">
+    <main className="mx-auto max-w-4xl px-2 py-4 sm:px-6 sm:py-6">
       <header className="mb-8 text-center">
         <h1 className="text-4xl font-extrabold text-zinc-900 md:text-5xl dark:text-white">
           Sitemap

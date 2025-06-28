@@ -115,7 +115,7 @@ export default function BlogListClient({ posts }: BlogListClientProps) {
 
       {paginatedPosts.length > 0 ? (
         <>
-          <div className="grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="xxl:grid-cols-3 grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2">
             {paginatedPosts.map((post) => (
               <BlogPostCard key={post.uid} post={post} />
             ))}

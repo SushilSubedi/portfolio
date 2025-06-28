@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useChat } from '@ai-sdk/react'
 import { Maximize2, Minimize2 } from 'lucide-react'
 
@@ -26,6 +26,16 @@ export default function Page() {
   const toggleExpanded = () => {
     setIsExpanded(!isExpanded)
   }
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setIsExpanded(false)
+      }
+    }
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [setIsExpanded])
 
   return (
     <div
