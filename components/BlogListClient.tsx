@@ -66,7 +66,7 @@ export default function BlogListClient({ posts }: BlogListClientProps) {
               setSearchQuery(e.target.value)
               setCurrentPage(1)
             }}
-            className="w-full rounded-md border border-zinc-200 bg-white px-4 py-2.5 pr-10 text-zinc-900 shadow-sm focus:border-zinc-400 focus:ring-1 focus:ring-zinc-400 focus:outline-none dark:border-zinc-600 dark:bg-zinc-800 dark:text-zinc-100 dark:focus:border-zinc-500 dark:focus:ring-zinc-500"
+            className="w-full rounded-md border border-zinc-200 bg-white/80 backdrop-blur-md px-4 py-2.5 pr-10 text-zinc-900 shadow-sm focus:border-zinc-400 focus:ring-1 focus:ring-zinc-400 focus:outline-none dark:border-zinc-700 dark:bg-zinc-900/80 dark:backdrop-blur-md dark:text-zinc-100 dark:focus:border-zinc-500 dark:focus:ring-zinc-500"
           />
           <svg
             className="absolute top-1/2 right-3 h-5 w-5 -translate-y-1/2 text-zinc-400 dark:text-zinc-500"
@@ -90,7 +90,7 @@ export default function BlogListClient({ posts }: BlogListClientProps) {
               setSelectedCategory(e.target.value)
               setCurrentPage(1)
             }}
-            className="w-full appearance-none rounded-md border border-zinc-200 bg-white px-4 py-2.5 pr-8 text-zinc-900 shadow-sm focus:border-zinc-400 focus:ring-1 focus:ring-zinc-400 focus:outline-none dark:border-zinc-600 dark:bg-zinc-800 dark:text-zinc-100 dark:focus:border-zinc-500 dark:focus:ring-zinc-500"
+            className="w-full appearance-none rounded-md border border-zinc-200 bg-white/80 backdrop-blur-md px-4 py-2.5 pr-8 text-zinc-900 shadow-sm focus:border-zinc-400 focus:ring-1 focus:ring-zinc-400 focus:outline-none dark:border-zinc-700 dark:bg-zinc-900/80 dark:backdrop-blur-md dark:text-zinc-100 dark:focus:border-zinc-500 dark:focus:ring-zinc-500"
           >
             {categories.map((category) => (
               <option key={category} value={category}>

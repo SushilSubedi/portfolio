@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
+import { Inter } from 'next/font/google'
 import { ThemeProvider } from 'next-themes'
+import { cn } from '@/lib/utils'
 
 import './globals.css'
 import Header from './header'
@@ -19,14 +20,9 @@ export const metadata: Metadata = {
     'A dedicated and professional software engineering working on tech industry for more than 4 years.',
 }
 
-const geist = Geist({
-  variable: '--font-geist',
+const inter = Inter({
   subsets: ['latin'],
-})
-
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
+  variable: '--font-inter',
 })
 
 export default function RootLayout({
@@ -37,25 +33,40 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geist.variable} ${geistMono.variable} bg-gradient-to-br from-white via-zinc-50 to-zinc-100 dark:from-zinc-900 dark:via-zinc-800 dark:to-zinc-900`}
+        className={cn(
+          'font-sans antialiased',
+          inter.variable,
+        )}
+        suppressHydrationWarning={true}
       >
-        <GoogleAnalytics
-          GA_MEASUREMENT_ID={String(process.env.GOOGLE_ANALYTICS_ID)}
-        />
+        {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
+          <GoogleAnalytics
+            GA_MEASUREMENT_ID={String(process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID)}
+          />
+        )}
         <ThemeProvider
           enableSystem={true}
           attribute="class"
           storageKey="theme"
           defaultTheme="system"
         >
-          <div className="flex min-h-screen w-full flex-col font-[family-name:var(--font-inter-tight)]">
-            <Header />
-            <div className="relative mx-auto flex w-full max-w-screen-xl flex-1 flex-col justify-between px-2 pt-2 sm:px-4 sm:pt-4">
-              <div className="flex h-full w-full flex-1 justify-center">
-                {children}
+          <div className="min-h-screen w-full relative bg-black">
+            {/* Pearl Mist Background with Top Glow */}
+            <div
+              className="absolute inset-0 z-0"
+              style={{
+                background: "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(226, 232, 240, 0.15), transparent 70%), #000000",
+              }}
+            />
+            <div className="relative z-10 flex min-h-screen w-full flex-col font-[family-name:var(--font-inter)]">
+              <Header />
+              <div className="relative mx-auto flex w-full max-w-screen-xl flex-1 flex-col justify-between px-2 pt-2 sm:px-4 sm:pt-4">
+                <div className="flex h-full w-full flex-1 justify-center">
+                  {children}
+                </div>
               </div>
+              <Footer />
             </div>
-            <Footer />
           </div>
         </ThemeProvider>
       </body>

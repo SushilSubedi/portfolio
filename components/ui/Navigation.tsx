@@ -58,7 +58,11 @@ const Navigation = () => {
       <div className="flex-shrink-0">
         <Link
           href="/"
-          className="text-xl font-bold tracking-tight text-zinc-900 transition-colors hover:text-zinc-700 dark:text-zinc-100 dark:hover:text-zinc-300"
+          className={cn(
+            'text-xl font-bold tracking-tight transition-colors',
+            isHome ? 'text-white hover:text-zinc-300' : 'text-zinc-900 hover:text-zinc-700',
+            'dark:text-zinc-100 dark:hover:text-zinc-300'
+          )}
         >
           {isHome ? (
             <>
@@ -83,7 +87,7 @@ const Navigation = () => {
       </div>
 
       {/* Desktop Links */}
-      <div className="hidden items-center gap-x-8 md:flex">
+        <div className="hidden items-center gap-x-8 md:flex">
         {links.map(({ href, label, key }) => {
           const isActive = pathname === href
           return (
@@ -92,13 +96,18 @@ const Navigation = () => {
               href={href}
               className={cn(
                 'relative px-1 py-2 text-base font-medium transition-colors duration-200',
-                'text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100',
-                isActive && 'text-zinc-900 dark:text-zinc-100',
+                isHome
+                  ? 'text-white hover:text-zinc-300'
+                  : 'text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100',
+                isActive && (isHome ? 'text-white' : 'text-zinc-900 dark:text-zinc-100'),
               )}
             >
               {label}
               {isActive && (
-                <span className="absolute inset-x-0 bottom-0 h-0.5 bg-zinc-900 dark:bg-zinc-100" />
+                <span className={cn(
+                  'absolute inset-x-0 bottom-0 h-0.5',
+                  isHome ? 'bg-white' : 'bg-zinc-900 dark:bg-zinc-100'
+                )} />
               )}
             </Link>
           )
@@ -113,9 +122,9 @@ const Navigation = () => {
           aria-label="Toggle navigation"
         >
           {isOpen ? (
-            <X className="h-6 w-6 text-zinc-700 dark:text-zinc-300" />
+            <X className={cn('h-6 w-6', isHome ? 'text-white' : 'text-zinc-700', 'dark:text-zinc-300')} />
           ) : (
-            <Menu className="h-6 w-6 text-zinc-700 dark:text-zinc-300" />
+            <Menu className={cn('h-6 w-6', isHome ? 'text-white' : 'text-zinc-700', 'dark:text-zinc-300')} />
           )}
         </button>
       </div>

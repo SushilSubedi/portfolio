@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef } from 'react'
 import ReactMarkdown from 'react-markdown'
+import { cn } from '@/lib/utils'
 
 import { MessageBoxProps, Part } from '@/constants/types/index'
 
@@ -30,7 +31,7 @@ function MessageBox({
       className={`transition-all duration-300 ${isExpanded ? 'h-[70vh] min-h-[500px]' : 'h-[42vh] min-h-[300px]'}`}
     >
       <div
-        className="h-full overflow-y-auto rounded-lg border border-zinc-200 bg-white p-4 shadow-sm dark:border-zinc-700 dark:bg-zinc-800"
+        className="h-full overflow-y-auto rounded-lg border border-zinc-200 bg-white/80 backdrop-blur-md p-4 shadow-sm dark:border-zinc-700 dark:bg-zinc-900/80 dark:backdrop-blur-md"
         ref={scrollContainerRef}
       >
         <div className="min-h-16 space-y-4 py-2 pr-2">
@@ -47,11 +48,12 @@ function MessageBox({
                 className={`max-w-full transition-all duration-300 ${message.role === 'user' ? 'md:max-w-[70%]' : 'md:max-w-[85%]'}`}
               >
                 <div
-                  className={`w-full rounded-lg p-3 text-sm shadow-sm transition-all duration-200 hover:shadow-md ${
+                  className={cn(
+                    'w-full rounded-lg p-3 text-sm shadow-sm transition-all duration-200 hover:shadow-md',
                     message.role === 'user'
-                      ? 'bg-zinc-200 text-zinc-900 dark:bg-zinc-600 dark:text-zinc-100'
-                      : 'bg-zinc-100 text-zinc-900 dark:bg-zinc-700 dark:text-zinc-100'
-                  }`}
+                      ? 'bg-white/80 backdrop-blur-sm text-zinc-900 dark:bg-zinc-900/80 dark:text-zinc-100'
+                      : 'bg-white/90 backdrop-blur-sm text-zinc-900 dark:bg-zinc-900/90 dark:text-zinc-100'
+                  )}
                 >
                   {message.parts ? (
                     message.parts.map((part: Part, partIndex: number) => {
@@ -140,7 +142,12 @@ function MessageBox({
           ))}
           {isAIMessageLoading && (
             <div className="animate-fade-in flex items-center justify-start">
-              <div className="flex items-center space-x-2 rounded-lg bg-zinc-100 p-3 shadow-sm dark:bg-zinc-700">
+              <div
+                className={cn(
+                  'flex items-center space-x-2 rounded-lg p-3 shadow-sm',
+                  'bg-white/80 backdrop-blur-sm dark:bg-zinc-900/80 dark:backdrop-blur-sm'
+                )}
+              >
                 <div className="flex space-x-1">
                   <div className="h-2 w-2 animate-bounce rounded-full bg-zinc-400 [animation-delay:-0.3s] dark:bg-zinc-500"></div>
                   <div className="h-2 w-2 animate-bounce rounded-full bg-zinc-400 [animation-delay:-0.15s] dark:bg-zinc-500"></div>

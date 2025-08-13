@@ -1,5 +1,18 @@
 export const projects = [
   {
+    title: 'aListEngine',
+    description:
+      'Transform your photos into quality listings with professional titles, detailed descriptions and optimized pricing. Ready to export to AuctionFlex, Live Auctioneers, Shopify, and beyond.',
+    role: 'Full Stack Engineer',
+    techStack: ['React', 'Zustand', 'Rails', 'PostgreSQL'],
+    liveUrl: 'https://alistengine.com/',
+    company: {
+      name: 'U & J Enterprises',
+      url: 'https://alistengine.com/',
+    },
+    image: null,
+  },
+  {
     title: 'GangstaBet',
     description:
       'A blockchain-based sports betting platform with NFT characters. Developed the user interface using React and Redux, integrating seamlessly with smart contracts to deliver a smooth betting experience.',

@@ -36,7 +36,7 @@ const BlogPostCard = ({
   const showImage = imagePath && !imageError && imagePath.trim() !== ''
 
   return (
-    <article className="group dark:hover:bg-zinc-750 overflow-hidden rounded-xl bg-white shadow-sm transition-all duration-200 hover:shadow-md dark:bg-zinc-700/50">
+    <article className="group overflow-hidden rounded-xl bg-white/80 backdrop-blur-md border border-zinc-200 shadow-sm transition-all duration-200 hover:shadow-md hover:bg-white/90 dark:bg-zinc-900/80 dark:border-zinc-700 dark:backdrop-blur-md dark:hover:bg-zinc-900/90">
       <Link href={`/blog/${post.uid}`} className="block">
         {/* Image Section */}
         {showImage ? (

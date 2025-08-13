@@ -1,3 +1,10 @@
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Terms & Policies | Sushil Subedi',
+  description: 'Understand the rules and guidelines for using this website, including how your data is handled and protected.',
+}
+
 export default function TermsAndPoliciesPage() {
   return (
     <main className="mx-auto max-w-4xl px-2 py-4 sm:px-6 sm:py-6">

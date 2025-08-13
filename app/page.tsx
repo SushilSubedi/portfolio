@@ -1,17 +1,14 @@
-'use client'
-
-import { useState, useEffect } from 'react'
+import type { Metadata } from 'next'
+// Page metadata
+export const metadata: Metadata = {
+  title: 'Sushil Subedi - JS & Rails Developer',
+  description: 'A dedicated and professional software engineer working in the tech industry for more than 4 years.',
+}
 import { Briefcase, MapPin } from 'lucide-react'
-
-import ChatBot from '@/components/ui/chatbot'
+import ChatBotClient from '@/components/ChatBotClient'
 import Navigation from '@/components/ui/Navigation'
 
 export default function Home() {
-  const [isClient, setIsClient] = useState(false)
-
-  useEffect(() => {
-    setIsClient(true)
-  }, [])
 
   return (
     <div className="flex h-full flex-col">
@@ -29,21 +26,20 @@ export default function Home() {
               {/* Left side - Hero content */}
               <div className="space-y-6 text-center lg:text-left">
                 <div className="space-y-4">
-                  <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-5xl lg:text-6xl dark:text-zinc-100">
-                    Hello, World!
-                    <span className="inline-block animate-bounce">👨‍💻</span>
+                  <h1 className="text-3xl font-bold tracking-tight text-zinc-100 sm:text-5xl lg:text-6xl">
+                    Hello, World! <span className="inline-block animate-bounce">👨‍💻</span>
                   </h1>
-                  <p className="text-base leading-7 text-zinc-600 sm:text-lg dark:text-zinc-400">
+                  <p className="text-base leading-7 text-zinc-300 sm:text-lg">
                     I&apos;m a passionate developer crafting scalable solutions
                     and elegant user experiences.
                     <br />
-                    <span className="font-medium text-zinc-700 dark:text-zinc-300">
+                    <span className="font-medium text-zinc-200">
                       Let&apos;s build something amazing together.
                     </span>
                   </p>
                 </div>
 
-                <div className="flex items-center justify-center space-x-6 text-sm text-zinc-500 lg:justify-start dark:text-zinc-400">
+                <div className="flex items-center justify-center space-x-6 text-sm text-zinc-400 lg:justify-start">
                   <div className="flex items-center space-x-2">
                     <Briefcase className="h-4 w-4" />
                     <span>Available for projects</span>
@@ -59,7 +55,7 @@ export default function Home() {
               {/* Right side - ChatBot */}
               <div className="flex items-center justify-center">
                 <div className="w-full max-w-lg">
-                  {isClient ? <ChatBot /> : null}
+                  <ChatBotClient />
                 </div>
               </div>
             </div>

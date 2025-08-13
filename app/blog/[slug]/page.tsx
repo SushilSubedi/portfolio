@@ -1,4 +1,5 @@
 import { notFound } from 'next/navigation'
+import type { Metadata } from 'next'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -7,8 +8,27 @@ import Cover from '@/components/mdx/Cover'
 import BlogImage from '@/components/mdx/BlogImage'
 import CodeBlock from '@/components/mdx/CodeBlock'
 import PostInteractions from '@/components/PostInteractions'
-import { BLOG_POSTS } from '@/data/blogs'
 import BlogPostDate from '@/components/BlogPostDate'
+import { BLOG_POSTS } from '@/data/blogs'
+
+/**
+ * Generate dynamic metadata for each blog post page.
+ */
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  const { slug } = params
+  const post = BLOG_POSTS.find((p) => p.uid === slug)
+  if (!post) {
+    return {
+      title: 'Post Not Found | Sushil Subedi',
+      description: 'The requested blog post could not be found.',
+    }
+  }
+  const title = `${post.title} | Sushil Subedi`
+  return {
+    title,
+    description: post.description,
+  }
+}
 
 const components = {
   Cover,
@@ -30,11 +50,11 @@ export default async function BlogPost({
   }
 
   return (
-    <div className="min-h-full overflow-x-hidden bg-zinc-50/50 dark:bg-zinc-800/50">
+    <div className="min-h-full overflow-x-hidden bg-white/80 backdrop-blur-md dark:bg-zinc-900/80 dark:backdrop-blur-md">
       <div className="max-w-full-lg mx-auto w-full">
         {/* Hero Image Section */}
         {post.image && (
-          <div className="relative h-56 w-full max-w-full overflow-hidden rounded-none bg-zinc-100 sm:h-80 sm:rounded-lg dark:bg-zinc-800">
+          <div className="relative h-56 w-full max-w-full overflow-hidden rounded-none bg-transparent sm:h-80 sm:rounded-lg">
             <Image
               src={post.image}
               alt={post.title}
@@ -48,7 +68,7 @@ export default async function BlogPost({
         )}
 
         {/* Article Content */}
-        <div className="relative w-full max-w-full bg-white px-2 py-4 sm:px-6 sm:py-8 lg:px-12 lg:py-12 dark:bg-zinc-800">
+        <div className="relative w-full max-w-full bg-white/80 backdrop-blur-md px-2 py-4 sm:px-6 sm:py-8 lg:px-12 lg:py-12 dark:bg-zinc-900/80 dark:backdrop-blur-md">
           {/* Back Navigation */}
           <Link
             href="/blog"
@@ -94,7 +114,7 @@ export default async function BlogPost({
             {/* Tags */}
             {post.category && (
               <div className="mt-6 flex flex-wrap gap-2">
-                <span className="inline-flex items-center rounded-full bg-zinc-100 px-3 py-1.5 text-sm font-medium text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">
+                <span className="inline-flex items-center rounded-full bg-white/80 backdrop-blur-sm px-3 py-1.5 text-sm font-medium text-zinc-700 dark:bg-zinc-900/80 dark:backdrop-blur-sm dark:text-zinc-300">
                   {post.category}
                 </span>
               </div>
@@ -108,7 +128,7 @@ export default async function BlogPost({
 
           {/* External Link */}
           {post.link && (
-            <div className="mt-10 rounded-xl border border-zinc-200 bg-zinc-50 p-6 dark:border-zinc-600 dark:bg-zinc-700">
+            <div className="mt-10 rounded-xl border border-zinc-200 bg-white/90 backdrop-blur-sm p-6 dark:border-zinc-700 dark:bg-zinc-900/90 dark:backdrop-blur-sm">
               <p className="text-sm text-zinc-600 dark:text-zinc-300">
                 Originally published on{' '}
                 <a

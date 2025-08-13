@@ -47,3 +47,7 @@ SushilAI is a custom AI assistant built with the Vercel AI SDK and Google’s Ge
 - **Scope**: Limited to answering questions about me (Sushil Subedi).
 - **Formatting**: Responses use Markdown syntax (bold headings with `**`, bullet points with `*`) for clarity.
 - **Photo Handling**: Can describe a registered photo (e.g., me on a boat) and refer users to my LinkedIn.
+
+## Environment Variables
+
+- `NEXT_PUBLIC_GA_MEASUREMENT_ID`: Your Google Analytics Measurement ID (e.g., `G-XXXXXXXXXX`). Set this in your environment to enable analytics tracking on the site.
