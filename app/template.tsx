@@ -1,8 +1,17 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { usePathname } from 'next/navigation'
+import { useEffect } from 'react'
+import gtag from '@/lib/gtag'
 
 export default function Template({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname()
+  useEffect(() => {
+    if (pathname) {
+      gtag.pageview(pathname)
+    }
+  }, [pathname])
   return (
     <motion.div
       initial={{ y: 15, opacity: 0 }}
