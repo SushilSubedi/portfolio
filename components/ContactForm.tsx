@@ -77,7 +77,7 @@ export default function ContactForm() {
           Thank you!
         </h3>
         <p className="mt-2 text-zinc-300 dark:text-zinc-400">
-          Your message has been successfully sent. Let's build something amazing
+          Your message has been successfully sent. Let&apos;s build something amazing
           together!
         </p>
       </div>
@@ -91,7 +91,7 @@ export default function ContactForm() {
           Get in Touch
         </h1>
         <p className="mx-auto mt-6 max-w-2xl text-lg text-zinc-300 dark:text-zinc-400">
-          I'd love to hear from you! Fill out the form and I’ll get back to you
+          I&apos;d love to hear from you! Fill out the form and I&apos;ll get back to you
           shortly.
         </p>
       </div>

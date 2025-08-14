@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import { ThemeProvider } from 'next-themes'
 import { cn } from '@/lib/utils'
+import { Suspense } from 'react'
 
 import './globals.css'
 import Header from './header'
@@ -33,16 +34,15 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={cn(
-          'font-sans antialiased',
-          inter.variable,
-        )}
+        className={cn('font-sans antialiased', inter.variable)}
         suppressHydrationWarning={true}
       >
-        {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
-          <GoogleAnalytics
-            GA_MEASUREMENT_ID={String(process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID)}
-          />
+        {process.env.NODE_ENV === 'production' && process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
+          <Suspense fallback={null}>
+            <GoogleAnalytics
+              GA_MEASUREMENT_ID={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}
+            />
+          </Suspense>
         )}
         <ThemeProvider
           enableSystem={true}
@@ -50,12 +50,13 @@ export default function RootLayout({
           storageKey="theme"
           defaultTheme="system"
         >
-          <div className="min-h-screen w-full relative bg-black">
+          <div className="relative min-h-screen w-full bg-black">
             {/* Pearl Mist Background with Top Glow */}
             <div
               className="absolute inset-0 z-0"
               style={{
-                background: "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(226, 232, 240, 0.15), transparent 70%), #000000",
+                background:
+                  'radial-gradient(ellipse 80% 60% at 50% 0%, rgba(226, 232, 240, 0.15), transparent 70%), #000000',
               }}
             />
             <div className="relative z-10 flex min-h-screen w-full flex-col font-[family-name:var(--font-inter)]">

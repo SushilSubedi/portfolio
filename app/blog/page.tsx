@@ -3,7 +3,8 @@ import React from 'react'
 
 export const metadata: Metadata = {
   title: 'Blog | Sushil Subedi',
-  description: 'Thoughts on building software, navigating career paths, and the intersection of technology and creativity.',
+  description:
+    'Thoughts on building software, navigating career paths, and the intersection of technology and creativity.',
 }
 import BlogListClient from '@/components/BlogListClient'
 import { BLOG_POSTS } from '@/data/blogs'

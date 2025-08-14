@@ -14,7 +14,7 @@ const Form: React.FC<FormProps> = ({
 }) => {
   return (
     <form onSubmit={handleSubmit} className="mt-4">
-      <div className="flex items-end space-x-2 rounded-lg border border-zinc-200 bg-white/80 backdrop-blur-md p-3 shadow-sm dark:border-zinc-700 dark:bg-zinc-900/80 dark:backdrop-blur-md">
+      <div className="flex items-end space-x-2 rounded-lg border border-zinc-200 bg-white/80 p-3 shadow-sm backdrop-blur-md dark:border-zinc-700 dark:bg-zinc-900/80 dark:backdrop-blur-md">
         <textarea
           value={input}
           onChange={handleInputChange}

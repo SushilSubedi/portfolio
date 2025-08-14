@@ -31,11 +31,11 @@ function MessageBox({
       className={`transition-all duration-300 ${isExpanded ? 'h-[70vh] min-h-[500px]' : 'h-[42vh] min-h-[300px]'}`}
     >
       <div
-        className="h-full overflow-y-auto rounded-lg border border-zinc-200 bg-white/80 backdrop-blur-md p-4 shadow-sm dark:border-zinc-700 dark:bg-zinc-900/80 dark:backdrop-blur-md"
+        className="h-full overflow-y-auto rounded-lg border border-zinc-200 bg-white/80 p-4 shadow-sm backdrop-blur-md dark:border-zinc-700 dark:bg-zinc-900/80 dark:backdrop-blur-md"
         ref={scrollContainerRef}
       >
         <div className="min-h-16 space-y-4 py-2 pr-2">
-          {messages.map((message: any, index: number) => (
+          {messages.map((message, index: number) => (
             <div
               key={message.id}
               className={`animate-fade-in flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
@@ -51,8 +51,8 @@ function MessageBox({
                   className={cn(
                     'w-full rounded-lg p-3 text-sm shadow-sm transition-all duration-200 hover:shadow-md',
                     message.role === 'user'
-                      ? 'bg-white/80 backdrop-blur-sm text-zinc-900 dark:bg-zinc-900/80 dark:text-zinc-100'
-                      : 'bg-white/90 backdrop-blur-sm text-zinc-900 dark:bg-zinc-900/90 dark:text-zinc-100'
+                      ? 'bg-white/80 text-zinc-900 backdrop-blur-sm dark:bg-zinc-900/80 dark:text-zinc-100'
+                      : 'bg-white/90 text-zinc-900 backdrop-blur-sm dark:bg-zinc-900/90 dark:text-zinc-100',
                   )}
                 >
                   {message.parts ? (
@@ -94,8 +94,38 @@ function MessageBox({
                                   ),
                                 }}
                               >
-                                {part.text}
+                                {part.text || ''}
                               </ReactMarkdown>
+                            </div>
+                          )
+                        case 'reasoning':
+                          return (
+                            <div
+                              key={partIndex}
+                              className="mb-2 text-sm text-zinc-600 italic dark:text-zinc-400"
+                            >
+                              {part.reasoning}
+                            </div>
+                          )
+                        case 'tool-invocation':
+                          return (
+                            <div
+                              key={partIndex}
+                              className="mb-2 text-sm text-zinc-500 dark:text-zinc-500"
+                            >
+                              Tool invocation:{' '}
+                              {JSON.stringify(part.toolInvocation)}
+                            </div>
+                          )
+                        case 'source':
+                        case 'file':
+                        case 'step-start':
+                          return (
+                            <div
+                              key={partIndex}
+                              className="mb-2 text-sm text-zinc-500 dark:text-zinc-500"
+                            >
+                              {part.type}: {JSON.stringify(part)}
                             </div>
                           )
                         default:
@@ -145,7 +175,7 @@ function MessageBox({
               <div
                 className={cn(
                   'flex items-center space-x-2 rounded-lg p-3 shadow-sm',
-                  'bg-white/80 backdrop-blur-sm dark:bg-zinc-900/80 dark:backdrop-blur-sm'
+                  'bg-white/80 backdrop-blur-sm dark:bg-zinc-900/80 dark:backdrop-blur-sm',
                 )}
               >
                 <div className="flex space-x-1">

@@ -2,14 +2,14 @@ import type { Metadata } from 'next'
 // Page metadata
 export const metadata: Metadata = {
   title: 'Sushil Subedi - JS & Rails Developer',
-  description: 'A dedicated and professional software engineer working in the tech industry for more than 4 years.',
+  description:
+    'A dedicated and professional software engineer working in the tech industry for more than 4 years.',
 }
 import { Briefcase, MapPin } from 'lucide-react'
 import ChatBotClient from '@/components/ChatBotClient'
 import Navigation from '@/components/ui/Navigation'
 
 export default function Home() {
-
   return (
     <div className="flex h-full flex-col">
       <header className="relative w-full">
@@ -27,7 +27,8 @@ export default function Home() {
               <div className="space-y-6 text-center lg:text-left">
                 <div className="space-y-4">
                   <h1 className="text-3xl font-bold tracking-tight text-zinc-100 sm:text-5xl lg:text-6xl">
-                    Hello, World! <span className="inline-block animate-bounce">👨‍💻</span>
+                    Hello, World!{' '}
+                    <span className="inline-block animate-bounce">👨‍💻</span>
                   </h1>
                   <p className="text-base leading-7 text-zinc-300 sm:text-lg">
                     I&apos;m a passionate developer crafting scalable solutions

@@ -1,7 +1,7 @@
-"use client";
-import React from 'react';
-import { motion } from 'framer-motion';
-import Image from 'next/image';
+'use client'
+import React from 'react'
+import { motion } from 'framer-motion'
+import Image from 'next/image'
 import {
   BookOpen,
   Briefcase,
@@ -14,10 +14,10 @@ import {
   Server,
   Sparkles,
   Wind,
-} from 'lucide-react';
+} from 'lucide-react'
 
-import { corePrinciples, experiences, toolkit } from '@/data/about';
-import myImage from '@/public/icons/sushil.jpg';
+import { corePrinciples, experiences, toolkit } from '@/data/about'
+import myImage from '@/public/icons/sushil.jpg'
 
 const iconMap = {
   Sparkles: <Sparkles className="h-8 w-8 text-zinc-500" />,
@@ -28,11 +28,11 @@ const iconMap = {
   Database: <Database className="h-8 w-8 text-zinc-500" />,
   GitMerge: <GitMerge className="h-8 w-8 text-zinc-500" />,
   Wind: <Wind className="h-8 w-8 text-zinc-500" />,
-};
+}
 
 const getIcon = (iconName: string) => {
-  return iconMap[iconName as keyof typeof iconMap] || null;
-};
+  return iconMap[iconName as keyof typeof iconMap] || null
+}
 
 export default function ClientAbout() {
   return (
@@ -226,5 +226,5 @@ export default function ClientAbout() {
         </motion.section>
       </div>
     </div>
-  );
+  )
 }

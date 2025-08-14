@@ -2,7 +2,8 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Terms & Policies | Sushil Subedi',
-  description: 'Understand the rules and guidelines for using this website, including how your data is handled and protected.',
+  description:
+    'Understand the rules and guidelines for using this website, including how your data is handled and protected.',
 }
 
 export default function TermsAndPoliciesPage() {

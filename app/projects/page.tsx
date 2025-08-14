@@ -5,8 +5,7 @@ export const metadata: Metadata = {
   description:
     'Enterprise-level projects showcasing expertise in modern web technologies and scalable solutions.',
 }
-import Link from 'next/link'
-import Image from 'next/image'
+
 import ProjectListClient from '@/components/ProjectListClient'
 
 const ProjectsPage = () => {

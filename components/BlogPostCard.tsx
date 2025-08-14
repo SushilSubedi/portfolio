@@ -4,16 +4,6 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useState } from 'react'
 
-// Helper function to format date consistently
-const formatDate = (dateString: string) => {
-  return new Date(dateString).toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-    timeZone: 'UTC',
-  })
-}
-
 const BlogPostCard = ({
   post,
 }: {
@@ -36,7 +26,7 @@ const BlogPostCard = ({
   const showImage = imagePath && !imageError && imagePath.trim() !== ''
 
   return (
-    <article className="group overflow-hidden rounded-xl bg-white/80 backdrop-blur-md border border-zinc-200 shadow-sm transition-all duration-200 hover:shadow-md hover:bg-white/90 dark:bg-zinc-900/80 dark:border-zinc-700 dark:backdrop-blur-md dark:hover:bg-zinc-900/90">
+    <article className="group overflow-hidden rounded-xl border border-zinc-200 bg-white/80 shadow-sm backdrop-blur-md transition-all duration-200 hover:bg-white/90 hover:shadow-md dark:border-zinc-700 dark:bg-zinc-900/80 dark:backdrop-blur-md dark:hover:bg-zinc-900/90">
       <Link href={`/blog/${post.uid}`} className="block">
         {/* Image Section */}
         {showImage ? (

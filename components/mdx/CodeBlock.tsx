@@ -18,7 +18,9 @@ const getTextContent = (children: ReactNode): string => {
   }
 
   if (children && typeof children === 'object' && 'props' in children) {
-    return getTextContent((children as any).props.children)
+    return getTextContent(
+      (children as { props: { children: ReactNode } }).props.children,
+    )
   }
 
   return String(children || '')

@@ -6,7 +6,7 @@ export type Part = {
 }
 
 export interface MessageBoxProps {
-  messages: any[]
+  messages: Message[]
   isAIMessageLoading: boolean
   isExpanded?: boolean
 }
