@@ -22,6 +22,18 @@ const itemVariants = {
 }
 
 export default function ProjectListClient() {
+  // Only track in production environment
+  const isProduction = process.env.NODE_ENV === 'production'
+  const trackProjectClick = (title: string) => {
+    if (!isProduction || typeof window === 'undefined') return
+    const gtag = (window as any).gtag
+    if (typeof gtag === 'function') {
+      gtag('event', 'project_click', {
+        event_category: 'Projects',
+        event_label: title,
+      })
+    }
+  }
   return (
     <motion.div
       className="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-2"
@@ -85,15 +97,16 @@ export default function ProjectListClient() {
               ))}
             </div>
             <div className="mt-6 border-t border-zinc-100 pt-4 dark:border-zinc-700">
-              <Link
-                href={project.liveUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sm font-medium text-zinc-700 transition-colors hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-zinc-100"
-              >
-                <ExternalLink size={16} />
-                <span>View Live</span>
-              </Link>
+            <Link
+              href={project.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => trackProjectClick(project.title)}
+              className="inline-flex items-center gap-2 text-sm font-medium text-zinc-700 transition-colors hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-zinc-100"
+            >
+              <ExternalLink size={16} />
+              <span>View Live</span>
+            </Link>
             </div>
           </div>
         </motion.div>

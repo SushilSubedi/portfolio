@@ -58,6 +58,13 @@ export default function ContactForm() {
       })
       const data = await response.json()
       if (response.ok) {
+        if (typeof window !== 'undefined' && (window as any).gtag) {
+          (window as any).gtag('event', 'contact_form_submission', {
+            event_category: 'Contact',
+            event_label: 'Contact Form Submission',
+            value: 1,
+          })
+        }
         setStatus('Message sent successfully!')
         setSubmitted(true)
         setFormData({ name: '', email: '', message: '' })

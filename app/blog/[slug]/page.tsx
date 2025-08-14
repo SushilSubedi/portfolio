@@ -8,6 +8,7 @@ import Cover from '@/components/mdx/Cover'
 import BlogImage from '@/components/mdx/BlogImage'
 import CodeBlock from '@/components/mdx/CodeBlock'
 import PostInteractions from '@/components/PostInteractions'
+import BlogAnalytics from '@/components/BlogAnalytics'
 import BlogPostDate from '@/components/BlogPostDate'
 import { BLOG_POSTS } from '@/data/blogs'
 
@@ -144,6 +145,8 @@ export default async function BlogPostPage({ params }: PageProps) {
 
           {/* Post Interactions */}
           <PostInteractions post={post} />
+          {/* Analytics: track blog view */}
+          <BlogAnalytics slug={post.uid} title={post.title} />
         </div>
       </div>
     </div>

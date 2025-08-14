@@ -8,22 +8,34 @@ interface GoogleAnalyticsProps {
   GA_MEASUREMENT_ID?: string
 }
 
-export default function GoogleAnalytics({
-  GA_MEASUREMENT_ID,
-}: GoogleAnalyticsProps) {
+export default function GoogleAnalytics({ GA_MEASUREMENT_ID }: GoogleAnalyticsProps) {
   const pathname = usePathname()
   const searchParams = useSearchParams()
+  const isProduction = process.env.NODE_ENV === 'production'
 
   useEffect(() => {
-    if (GA_MEASUREMENT_ID && typeof window !== 'undefined' && window.gtag) {
-      const url = pathname + searchParams.toString()
-      window.gtag('config', GA_MEASUREMENT_ID, {
-        page_path: url,
-      })
+    if (
+      !GA_MEASUREMENT_ID ||
+      !isProduction ||
+      typeof window === 'undefined' ||
+      navigator.doNotTrack === '1' ||
+      navigator.doNotTrack === 'yes'
+    ) {
+      return
     }
-  }, [pathname, searchParams, GA_MEASUREMENT_ID])
+    const gtagFn = (window as any).gtag
+    if (typeof gtagFn !== 'function') {
+      return
+    }
+    const query = searchParams.toString()
+    const page_path = query ? `${pathname}?${query}` : pathname
+    gtagFn('config', GA_MEASUREMENT_ID, {
+      page_path,
+      anonymize_ip: true,
+    })
+  }, [pathname, searchParams, GA_MEASUREMENT_ID, isProduction])
 
-  if (!GA_MEASUREMENT_ID) {
+  if (!GA_MEASUREMENT_ID || !isProduction) {
     return null
   }
 
@@ -39,10 +51,11 @@ export default function GoogleAnalytics({
         dangerouslySetInnerHTML={{
           __html: `
             window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
+            function gtag(){dataLayer.push(arguments);} 
             gtag('js', new Date());
             gtag('config', '${GA_MEASUREMENT_ID}', {
-              page_path: window.location.pathname,
+              page_path: window.location.pathname + window.location.search,
+              anonymize_ip: true
             });
           `,
         }}
