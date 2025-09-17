@@ -37,13 +37,14 @@ export default function RootLayout({
         className={cn('font-sans antialiased', inter.variable)}
         suppressHydrationWarning={true}
       >
-        {process.env.NODE_ENV === 'production' && process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
-          <Suspense fallback={null}>
-            <GoogleAnalytics
-              GA_MEASUREMENT_ID={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}
-            />
-          </Suspense>
-        )}
+        {process.env.NODE_ENV === 'production' &&
+          process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
+            <Suspense fallback={null}>
+              <GoogleAnalytics
+                GA_MEASUREMENT_ID={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}
+              />
+            </Suspense>
+          )}
         <ThemeProvider
           enableSystem={true}
           attribute="class"
