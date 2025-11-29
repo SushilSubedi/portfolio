@@ -46,10 +46,11 @@ export default function RootLayout({
             </Suspense>
           )}
         <ThemeProvider
-          enableSystem={true}
+          enableSystem={false}
           attribute="class"
           storageKey="theme"
-          defaultTheme="system"
+          defaultTheme="dark"
+          forcedTheme="dark"
         >
           <div className="relative min-h-screen w-full bg-black">
             {/* Pearl Mist Background with Top Glow */}
