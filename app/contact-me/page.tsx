@@ -5,7 +5,7 @@ import {
   MapPin,
   Github,
   Linkedin,
-  Twitter,
+  X,
   Instagram,
 } from 'lucide-react'
 import ContactForm from '@/components/ContactForm'
@@ -107,7 +107,7 @@ export default function Contact() {
                 className="text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100"
               >
                 <span className="sr-only">Twitter</span>
-                <Twitter className="h-6 w-6" aria-hidden="true" />
+                <X className="h-6 w-6" aria-hidden="true" />
               </Link>
               <Link
                 href={SOCIAL_LINKS.INSTAGRAM}
