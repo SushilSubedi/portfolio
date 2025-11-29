@@ -105,7 +105,7 @@ export default function Home() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[60] bg-black/50 backdrop-blur-sm lg:hidden"
+            className="fixed inset-0 z-[60] flex flex-col justify-end bg-black/50 backdrop-blur-sm lg:hidden"
             onClick={() => setIsChatOpen(false)}
           >
             <motion.div
@@ -113,7 +113,7 @@ export default function Home() {
               animate={{ y: 0 }}
               exit={{ y: '100%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-              className="absolute inset-x-0 bottom-0 top-20 rounded-t-3xl bg-zinc-950 p-4"
+              className="relative flex h-[85dvh] w-full flex-col rounded-t-3xl bg-zinc-950 p-4 shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Close Button */}
@@ -126,7 +126,7 @@ export default function Home() {
               </button>
 
               {/* ChatBot */}
-              <div className="h-full">
+              <div className="flex-1 overflow-hidden">
                 <ChatBotClient isMobileModal={true} />
               </div>
             </motion.div>
