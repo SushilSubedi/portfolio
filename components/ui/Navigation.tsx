@@ -4,31 +4,35 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
 import { Menu, X } from 'lucide-react'
-import { useTheme } from 'next-themes'
-
 import { cn } from '@/lib/utils'
 import Image from 'next/image'
 import logo from '@/public/icons/logo.png'
-import whiteLogo from '@/public/icons/logo-white.png'
+import { motion } from 'framer-motion'
 
 const links = [
-  { href: '/projects', label: 'Projects', key: '5' },
-  { href: '/about', label: 'About', key: '2' },
-  { href: '/blog', label: 'Blog', key: '3' },
-  { href: '/contact-me', label: 'Contact', key: '4' },
+  { href: '/projects', label: 'Projects', key: 'projects' },
+  { href: '/about', label: 'About', key: 'about' },
+  { href: '/blog', label: 'Blog', key: 'blog' },
+  { href: '/contact-me', label: 'Contact', key: 'contact' },
 ]
 
 const Navigation = () => {
   const pathname = usePathname()
-  const [isOpen, setIsOpen] = useState(false)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [hoveredPath, setHoveredPath] = useState(pathname)
   const dropdownRef = useRef<HTMLDivElement | null>(null)
   const isHome = pathname === '/'
-  const { resolvedTheme } = useTheme()
+
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
     setMounted(true)
   }, [])
+
+  // Reset hoveredPath when pathname changes to prevent pill from sticking
+  useEffect(() => {
+    setHoveredPath(pathname)
+  }, [pathname])
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -36,11 +40,11 @@ const Navigation = () => {
         dropdownRef.current &&
         !dropdownRef.current.contains(event.target as Node)
       ) {
-        setIsOpen(false)
+        setIsMobileMenuOpen(false)
       }
     }
 
-    if (isOpen) {
+    if (isMobileMenuOpen) {
       document.addEventListener('mousedown', handleClickOutside)
     } else {
       document.removeEventListener('mousedown', handleClickOutside)
@@ -49,133 +53,127 @@ const Navigation = () => {
     return () => {
       document.removeEventListener('mousedown', handleClickOutside)
     }
-  }, [isOpen])
+  }, [isMobileMenuOpen])
 
-  const toggleMenu = () => setIsOpen(!isOpen)
+  const toggleMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen)
+  
+  // Check if we're on sitemap or terms pages
+  const isUtilityPage = pathname === '/sitemap' || pathname === '/terms-and-policies'
 
   return (
-    <nav className="relative z-50 flex w-full items-center justify-between">
-      <div className="flex-shrink-0">
-        <Link
-          href="/"
-          className={cn(
-            'text-xl font-bold tracking-tight transition-colors',
-            isHome
-              ? 'text-white hover:text-zinc-300'
-              : 'text-zinc-900 hover:text-zinc-700',
-            'dark:text-zinc-100 dark:hover:text-zinc-300',
-          )}
-        >
-          {isHome ? (
-            <>
-              <Image
-                src={mounted && resolvedTheme === 'dark' ? logo : whiteLogo}
-                alt="Sushil Logo"
-                height="60"
-                width="60"
-                className="mr-2 inline-block"
-              />
-              <span>Sushil Subedi</span>
-            </>
-          ) : (
+    <motion.div
+      className="fixed top-4 left-0 right-0 z-50 flex justify-center px-4"
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{
+        delay: isHome ? 0.5 : 0,
+        duration: 1,
+        ease: [0.16, 1, 0.3, 1],
+      }}
+    >
+      <nav
+        className={cn(
+          'flex w-full max-w-5xl items-center justify-between rounded-2xl border px-4 py-3 shadow-lg transition-all duration-300',
+          isUtilityPage
+            ? 'border-zinc-700/70 bg-zinc-900/95 backdrop-blur-xl'
+            : 'border-zinc-200/50 bg-white/80 backdrop-blur-md dark:border-zinc-800/50 dark:bg-zinc-900/80',
+        )}
+      >
+        <div className="flex-shrink-0">
+          <Link
+            href="/"
+            className="flex items-center gap-2 text-xl font-bold tracking-tight text-zinc-900 transition-opacity hover:opacity-80 dark:text-zinc-100"
+          >
             <Image
-              src={mounted && resolvedTheme === 'dark' ? logo : whiteLogo}
+              src={logo}
               alt="Sushil Logo"
-              height="60"
-              width="60"
+              height="40"
+              width="40"
+              className="rounded-full"
+              priority
             />
-          )}
-        </Link>
-      </div>
-
-      {/* Desktop Links */}
-      <div className="hidden items-center gap-x-8 md:flex">
-        {links.map(({ href, label, key }) => {
-          const isActive = pathname === href
-          return (
-            <Link
-              key={key}
-              href={href}
-              className={cn(
-                'relative px-1 py-2 text-base font-medium transition-colors duration-200',
-                isHome
-                  ? 'text-white hover:text-zinc-300'
-                  : 'text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100',
-                isActive &&
-                  (isHome ? 'text-white' : 'text-zinc-900 dark:text-zinc-100'),
-              )}
-            >
-              {label}
-              {isActive && (
-                <span
-                  className={cn(
-                    'absolute inset-x-0 bottom-0 h-0.5',
-                    isHome ? 'bg-white' : 'bg-zinc-900 dark:bg-zinc-100',
-                  )}
-                />
-              )}
-            </Link>
-          )
-        })}
-      </div>
-
-      {/* Mobile Menu Button */}
-      <div className="flex items-center md:hidden">
-        <button
-          className="flex cursor-pointer items-center justify-center rounded-md p-2 transition-colors hover:bg-zinc-100 dark:hover:bg-zinc-800"
-          onClick={toggleMenu}
-          aria-label="Toggle navigation"
-        >
-          {isOpen ? (
-            <X
-              className={cn(
-                'h-6 w-6',
-                isHome ? 'text-white' : 'text-zinc-700',
-                'dark:text-zinc-300',
-              )}
-            />
-          ) : (
-            <Menu
-              className={cn(
-                'h-6 w-6',
-                isHome ? 'text-white' : 'text-zinc-700',
-                'dark:text-zinc-300',
-              )}
-            />
-          )}
-        </button>
-      </div>
-
-      {/* Mobile Menu Dropdown */}
-      {isOpen && (
-        <div
-          ref={dropdownRef}
-          className="animate-fade-in absolute top-14 right-0 mt-2 w-full rounded-xl border border-zinc-200 bg-white/95 p-4 shadow-xl shadow-zinc-800/5 ring-zinc-900/5 backdrop-blur-sm md:hidden dark:border-zinc-700 dark:bg-zinc-800/95 dark:shadow-zinc-900/20 dark:ring-white/10"
-        >
-          <div className="flex flex-col space-y-2">
-            {links.map(({ href, label, key }) => {
-              const isActive = pathname === href
-              return (
-                <Link
-                  key={key}
-                  href={href}
-                  onClick={() => setIsOpen(false)}
-                  className={cn(
-                    'rounded-md px-4 py-3 text-base font-medium transition-all duration-200',
-                    'text-zinc-700 dark:text-zinc-300',
-                    'hover:bg-zinc-100 hover:text-zinc-900 dark:hover:bg-zinc-700 dark:hover:text-white',
-                    isActive &&
-                      'bg-zinc-100 font-semibold text-zinc-900 dark:bg-zinc-700 dark:text-white',
-                  )}
-                >
-                  {label}
-                </Link>
-              )
-            })}
-          </div>
+            <span>Sushil Subedi</span>
+          </Link>
         </div>
-      )}
-    </nav>
+
+        {/* Desktop Links */}
+        <div className="hidden items-center gap-x-1 md:flex">
+          {links.map(({ href, label, key }) => {
+            const isActive = pathname === href
+            return (
+              <Link
+                key={key}
+                href={href}
+                className={cn(
+                  'relative rounded-full px-4 py-2 text-sm font-medium transition-all duration-200',
+                  isActive
+                    ? 'text-zinc-900 dark:text-zinc-100'
+                    : 'text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100',
+                )}
+                onMouseEnter={() => setHoveredPath(href)}
+                onMouseLeave={() => setHoveredPath(pathname)}
+              >
+                <span className="relative z-10">{label}</span>
+                {hoveredPath === href && (
+                  <motion.span
+                    layoutId="nav-pill"
+                    className="absolute inset-0 z-0 rounded-full bg-zinc-100 dark:bg-zinc-800"
+                    transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
+                  />
+                )}
+                {isActive && (
+                  <span className="absolute inset-x-0 -bottom-px h-px bg-gradient-to-r from-transparent via-zinc-900 to-transparent dark:via-zinc-100" />
+                )}
+              </Link>
+            )
+          })}
+        </div>
+
+        {/* Mobile Menu Button */}
+        <div className="flex items-center md:hidden">
+          <button
+            className="flex cursor-pointer items-center justify-center rounded-full p-2 text-zinc-600 transition-colors hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-100"
+            onClick={toggleMenu}
+            aria-label="Toggle navigation"
+          >
+            {isMobileMenuOpen ? (
+              <X className="h-6 w-6" />
+            ) : (
+              <Menu className="h-6 w-6" />
+            )}
+          </button>
+        </div>
+
+        {/* Mobile Menu Dropdown */}
+        {isMobileMenuOpen && (
+          <div
+            ref={dropdownRef}
+            className="absolute top-full right-0 left-0 mt-2 overflow-hidden rounded-2xl border border-zinc-200/50 bg-white/95 p-2 shadow-xl backdrop-blur-md md:hidden dark:border-zinc-800/50 dark:bg-zinc-900/95"
+          >
+            <div className="flex flex-col space-y-1">
+              {links.map(({ href, label, key }) => {
+                const isActive = pathname === href
+                return (
+                  <Link
+                    key={key}
+                    href={href}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className={cn(
+                      'rounded-xl px-4 py-3 text-base font-medium transition-all duration-200',
+                      isActive
+                        ? 'bg-zinc-100 text-zinc-900 dark:bg-zinc-800 dark:text-zinc-100'
+                        : 'text-zinc-600 hover:bg-zinc-50 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-100',
+                    )}
+                  >
+                    {label}
+                  </Link>
+                )
+              })}
+            </div>
+          </div>
+        )}
+      </nav>
+    </motion.div>
   )
 }
 

@@ -4,7 +4,7 @@ import React, { useState, useMemo } from 'react'
 import BlogPostCard from '@/components/BlogPostCard'
 import type { BlogPost } from '@/data/blogs'
 
-const POSTS_PER_PAGE = 6
+const POSTS_PER_PAGE = 9
 
 type BlogListClientProps = {
   posts: BlogPost[]
@@ -115,7 +115,7 @@ export default function BlogListClient({ posts }: BlogListClientProps) {
 
       {paginatedPosts.length > 0 ? (
         <>
-          <div className="xxl:grid-cols-3 grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {paginatedPosts.map((post) => (
               <BlogPostCard key={post.uid} post={post} />
             ))}

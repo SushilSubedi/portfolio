@@ -1,105 +1,146 @@
+'use client'
+
 import Link from 'next/link'
+import { motion } from 'framer-motion'
+import { Home, User, Briefcase, BookOpen, Mail, FileText, ChevronRight } from 'lucide-react'
+
+const sitemapLinks = [
+  {
+    href: '/',
+    title: 'Home',
+    description: 'Get a quick overview of who I am and chat with Sushil AI for personalized insights.',
+    icon: Home,
+  },
+  {
+    href: '/about',
+    title: 'About',
+    description: 'Discover my background, skills, experience, and what drives my passion for technology.',
+    icon: User,
+  },
+  {
+    href: '/projects',
+    title: 'Projects',
+    description: 'Explore my portfolio of enterprise-level projects and creative technical endeavors.',
+    icon: Briefcase,
+  },
+  {
+    href: '/blog',
+    title: 'Blog',
+    description: 'Read my thoughts, tutorials, and insights on web development and technology trends.',
+    icon: BookOpen,
+  },
+  {
+    href: '/contact-me',
+    title: 'Contact',
+    description: 'Get in touch for collaborations, opportunities, or just to connect.',
+    icon: Mail,
+  },
+  {
+    href: '/terms-and-policies',
+    title: 'Terms & Policies',
+    description: 'Review the legal guidelines and privacy policies governing this website.',
+    icon: FileText,
+  },
+]
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.2,
+    },
+  },
+}
+
+const itemVariants = {
+  hidden: { y: 20, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      type: 'spring',
+      stiffness: 100,
+      damping: 12,
+    },
+  },
+}
 
 export default function SitemapPage() {
   return (
-    <main className="mx-auto max-w-4xl px-2 py-4 sm:px-6 sm:py-6">
-      <header className="mb-8 text-center">
-        <h1 className="text-4xl font-extrabold text-zinc-900 md:text-5xl dark:text-white">
-          Sitemap
+    <main className="mx-auto max-w-5xl px-4 py-12 sm:px-6 sm:py-16">
+      {/* Header */}
+      <motion.header
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="mb-12 text-center"
+      >
+        <h1 className="text-4xl font-bold tracking-tight text-zinc-100 sm:text-5xl">
+          Site Navigation
         </h1>
-        <p className="mt-5 text-lg text-zinc-600 dark:text-zinc-400">
-          Your guide to my website—find my projects, blog posts, and story with
-          ease. Perfect for visitors or collaborators curious about what I do.
+        <p className="mx-auto mt-4 max-w-2xl text-lg text-zinc-400">
+          Your complete guide to exploring my portfolio, blog, and professional journey.
         </p>
-      </header>
+      </motion.header>
 
-      <section className="rounded-lg bg-white p-6 shadow-lg dark:bg-zinc-800">
-        <ul className="space-y-6 text-zinc-600 dark:text-zinc-400">
-          <li className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
-            <Link
-              href="/"
-              className="text-lg font-medium text-blue-600 hover:underline dark:text-blue-400"
-            >
-              Home
-            </Link>
-            <p className="mt-1 text-sm sm:mt-0 sm:ml-4">
-              The page where you get a quick overview of who I am and ask Sushil
-              AI for more information.
-            </p>
-          </li>
-          <li className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
-            <Link
-              href="/about-me"
-              className="text-lg font-medium text-blue-600 hover:underline dark:text-blue-400"
-            >
-              About
-            </Link>
-            <p className="mt-1 text-sm sm:mt-0 sm:ml-4">
-              Learn more about my background, skills, and passions.
-            </p>
-          </li>
-          <li className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
-            <Link
-              href="/projects"
-              className="text-lg font-medium text-blue-600 hover:underline dark:text-blue-400"
-            >
-              Projects
-            </Link>
-            <p className="mt-1 text-sm sm:mt-0 sm:ml-4">
-              Check out my portfolio of work, from coding projects to creative
-              endeavors.
-            </p>
-          </li>
-          <li className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
-            <Link
-              href="/blog"
-              className="text-lg font-medium text-blue-600 hover:underline dark:text-blue-400"
-            >
-              Blog
-            </Link>
-            <p className="mt-1 text-sm sm:mt-0 sm:ml-4">
-              Read my thoughts, tutorials, and updates on tech and beyond.
-            </p>
-          </li>
-          <li className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
-            <Link
-              href="/contact-me"
-              className="text-lg font-medium text-blue-600 hover:underline dark:text-blue-400"
-            >
-              Contact
-            </Link>
-            <p className="mt-1 text-sm sm:mt-0 sm:ml-4">
-              Get in touch with me for collaborations, questions, or just to say
-              hi.
-            </p>
-          </li>
-          <li className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
-            <Link
-              href="/terms-and-policies"
-              className="text-lg font-medium text-blue-600 hover:underline dark:text-blue-400"
-            >
-              Terms & Policies
-            </Link>
-            <p className="mt-1 text-sm sm:mt-0 sm:ml-4">
-              Review the legal stuff governing the use of this site.
-            </p>
-          </li>
-        </ul>
-      </section>
+      {/* Links Grid */}
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        className="grid grid-cols-1 gap-6 md:grid-cols-2"
+      >
+        {sitemapLinks.map((link) => {
+          const Icon = link.icon
+          return (
+            <motion.div key={link.href} variants={itemVariants}>
+              <Link
+                href={link.href}
+                className="group block h-full rounded-2xl border border-zinc-700/50 bg-zinc-900/60 p-6 backdrop-blur-xl transition-all duration-300 hover:border-zinc-600/50 hover:bg-zinc-900/80 hover:shadow-xl"
+              >
+                <div className="flex items-start gap-4">
+                  <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-blue-500/10 ring-1 ring-blue-500/20 transition-all duration-300 group-hover:bg-blue-500/20 group-hover:ring-blue-500/30">
+                    <Icon className="h-6 w-6 text-blue-400" />
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex items-center justify-between">
+                      <h2 className="text-xl font-bold text-zinc-100">
+                        {link.title}
+                      </h2>
+                      <ChevronRight className="h-5 w-5 text-zinc-500 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-zinc-300" />
+                    </div>
+                    <p className="mt-2 text-sm leading-relaxed text-zinc-400">
+                      {link.description}
+                    </p>
+                  </div>
+                </div>
+              </Link>
+            </motion.div>
+          )
+        })}
+      </motion.div>
 
-      {/* Footer Note */}
-      <div className="mt-8 text-center text-sm text-zinc-500 dark:text-zinc-400">
-        <p>
+      {/* Footer */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.8, duration: 0.5 }}
+        className="mt-12 text-center"
+      >
+        <p className="text-sm text-zinc-500">
           Need help navigating?{' '}
           <Link
             href="/contact-me"
-            className="text-blue-600 hover:underline dark:text-blue-400"
+            className="text-blue-400 transition-colors hover:text-blue-300"
           >
             Contact me
           </Link>
-          .
+          {' '}for assistance.
         </p>
-      </div>
+      </motion.div>
     </main>
   )
 }
+

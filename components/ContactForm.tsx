@@ -93,15 +93,7 @@ export default function ContactForm() {
 
   return (
     <>
-      <div className="mb-12 text-center">
-        <h1 className="text-4xl font-bold tracking-tight text-zinc-100 sm:text-5xl dark:text-zinc-100">
-          Get in Touch
-        </h1>
-        <p className="mx-auto mt-6 max-w-2xl text-lg text-zinc-300 dark:text-zinc-400">
-          I&apos;d love to hear from you! Fill out the form and I&apos;ll get back to you
-          shortly.
-        </p>
-      </div>
+
       {status && (
         <div
           className={`mb-6 rounded-md px-4 py-3 text-center font-medium ${
@@ -114,7 +106,6 @@ export default function ContactForm() {
         </div>
       )}
       <form onSubmit={handleSubmit} className="space-y-6">
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
           <div>
             <label
               htmlFor="name"
@@ -163,7 +154,6 @@ export default function ContactForm() {
               <p className="mt-2 text-sm text-red-500">{errors.email}</p>
             )}
           </div>
-        </div>
         <div>
           <label
             htmlFor="message"
