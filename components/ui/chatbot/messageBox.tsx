@@ -117,9 +117,10 @@ function MessageBox({
                               {JSON.stringify(part.toolInvocation)}
                             </div>
                           )
+                        case 'step-start':
+                          return null
                         case 'source':
                         case 'file':
-                        case 'step-start':
                           return (
                             <div
                               key={partIndex}

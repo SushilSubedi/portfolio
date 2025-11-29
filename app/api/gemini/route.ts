@@ -116,7 +116,7 @@ export async function POST(request: Request) {
     ]
 
     // Create AI model and generate response
-    const model = google('gemini-1.5-flash')
+    const model = google('models/gemini-2.0-flash')
     const result = await streamText({ model, messages: fullMessages })
 
     // Return streaming response with security headers
@@ -131,11 +131,15 @@ export async function POST(request: Request) {
     return response
   } catch (error) {
     // Log error for debugging (server-side only)
-    console.error('Gemini API error:', error)
+    console.error('Gemini API error details:', error)
+    if (error instanceof Error) {
+      console.error('Error message:', error.message)
+      console.error('Error stack:', error.stack)
+    }
 
     // Return sanitized error to client (no implementation details)
     return createErrorResponse(
-      'An error occurred while processing your request',
+      'An error occurred while processing your request. Please try again later.',
       500,
     )
   }
