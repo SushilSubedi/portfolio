@@ -28,10 +28,10 @@ function MessageBox({
 
   return (
     <div
-      className={`transition-all duration-300 ${isExpanded ? 'h-[70vh] min-h-[500px]' : 'h-[42vh] min-h-[300px]'}`}
+      className={`flex-1 overflow-hidden transition-all duration-300`}
     >
       <div
-        className="h-full overflow-y-auto rounded-lg border border-zinc-200 bg-white/80 p-4 shadow-sm backdrop-blur-md dark:border-zinc-700 dark:bg-zinc-900/80 dark:backdrop-blur-md"
+        className="h-full overflow-y-auto rounded-lg border border-zinc-700/50 bg-zinc-900/60 p-4 shadow-lg backdrop-blur-xl"
         ref={scrollContainerRef}
       >
         <div className="min-h-16 space-y-4 py-2 pr-2">
@@ -51,8 +51,8 @@ function MessageBox({
                   className={cn(
                     'w-full rounded-lg p-3 text-sm shadow-sm transition-all duration-200 hover:shadow-md',
                     message.role === 'user'
-                      ? 'bg-white/80 text-zinc-900 backdrop-blur-sm dark:bg-zinc-900/80 dark:text-zinc-100'
-                      : 'bg-white/90 text-zinc-900 backdrop-blur-sm dark:bg-zinc-900/90 dark:text-zinc-100',
+                      ? 'bg-zinc-800/80 text-zinc-100 backdrop-blur-sm ring-1 ring-zinc-700/50'
+                      : 'bg-zinc-800/60 text-zinc-100 backdrop-blur-sm ring-1 ring-zinc-700/30',
                   )}
                 >
                   {message.parts ? (
@@ -151,12 +151,12 @@ function MessageBox({
                             <li className="mb-1">{children}</li>
                           ),
                           code: ({ children }) => (
-                            <code className="rounded bg-zinc-200 px-1 py-0.5 text-xs dark:bg-zinc-600">
+                            <code className="rounded bg-zinc-700 px-1 py-0.5 text-xs text-zinc-100">
                               {children}
                             </code>
                           ),
                           pre: ({ children }) => (
-                            <pre className="mb-2 overflow-x-auto rounded bg-zinc-200 p-2 text-xs dark:bg-zinc-600">
+                            <pre className="mb-2 overflow-x-auto rounded bg-zinc-700 p-2 text-xs text-zinc-100">
                               {children}
                             </pre>
                           ),
@@ -175,13 +175,13 @@ function MessageBox({
               <div
                 className={cn(
                   'flex items-center space-x-2 rounded-lg p-3 shadow-sm',
-                  'bg-white/80 backdrop-blur-sm dark:bg-zinc-900/80 dark:backdrop-blur-sm',
+                  'bg-zinc-800/60 backdrop-blur-sm ring-1 ring-zinc-700/30',
                 )}
               >
                 <div className="flex space-x-1">
-                  <div className="h-2 w-2 animate-bounce rounded-full bg-zinc-400 [animation-delay:-0.3s] dark:bg-zinc-500"></div>
-                  <div className="h-2 w-2 animate-bounce rounded-full bg-zinc-400 [animation-delay:-0.15s] dark:bg-zinc-500"></div>
-                  <div className="h-2 w-2 animate-bounce rounded-full bg-zinc-400 dark:bg-zinc-500"></div>
+                  <div className="h-2 w-2 animate-bounce rounded-full bg-zinc-300 [animation-delay:-0.3s]"></div>
+                  <div className="h-2 w-2 animate-bounce rounded-full bg-zinc-300 [animation-delay:-0.15s]"></div>
+                  <div className="h-2 w-2 animate-bounce rounded-full bg-zinc-300"></div>
                 </div>
               </div>
             </div>

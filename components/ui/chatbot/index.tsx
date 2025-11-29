@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { createPortal } from 'react-dom'
 import { useChat } from '@ai-sdk/react'
 import { Maximize2, Minimize2 } from 'lucide-react'
 
@@ -9,12 +10,22 @@ import { initialMessages } from '@/data/gemini/chatConfig'
 import Form from './Form'
 import MessageBox from './messageBox'
 
-export default function Page() {
+interface ChatBotProps {
+  isMobileModal?: boolean
+}
+
+export default function Page({ isMobileModal = false }: ChatBotProps) {
   const [isExpanded, setIsExpanded] = useState(false)
+  const [mounted, setMounted] = useState(false)
+  
   const { messages, input, handleSubmit, handleInputChange, status } = useChat({
     api: '/api/gemini',
     initialMessages,
   })
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === 'Enter' && !e.shiftKey) {
@@ -37,27 +48,33 @@ export default function Page() {
     return () => window.removeEventListener('keydown', handleKeyDown)
   }, [setIsExpanded])
 
-  return (
+  const ChatContent = (
     <div
-      className={`rounded-l shadow-lg transition-all duration-300 ${isExpanded ? 'fixed inset-4 z-50 h-full w-[98%] max-w-none shadow-2xl' : 'w-full'}`}
+      className={`rounded-lg shadow-lg transition-all duration-300 ${
+        isExpanded && !isMobileModal
+          ? 'fixed inset-4 z-[100] flex flex-col bg-zinc-900/95 shadow-2xl backdrop-blur-xl'
+          : 'relative flex h-[500px] w-full flex-col'
+      }`}
     >
-      <div className="relative h-full w-full">
-        <button
-          onClick={toggleExpanded}
-          className="absolute top-2 right-2 z-10 rounded-md p-1 text-zinc-500 transition-colors hover:bg-zinc-100 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-300"
-          aria-label={isExpanded ? 'Minimize chat' : 'Expand chat'}
-        >
-          {isExpanded ? (
-            <Minimize2 className="h-4 w-4 cursor-pointer" />
-          ) : (
-            <Maximize2 className="h-4 w-4 cursor-pointer" />
-          )}
-        </button>
+      <div className="relative flex h-full w-full flex-col">
+        {!isMobileModal && (
+          <button
+            onClick={toggleExpanded}
+            className="absolute right-2 top-2 z-10 rounded-md p-1 text-zinc-500 transition-colors hover:bg-zinc-800 hover:text-zinc-300"
+            aria-label={isExpanded ? 'Minimize chat' : 'Expand chat'}
+          >
+            {isExpanded ? (
+              <Minimize2 className="h-4 w-4 cursor-pointer" />
+            ) : (
+              <Maximize2 className="h-4 w-4 cursor-pointer" />
+            )}
+          </button>
+        )}
 
         <MessageBox
           messages={messages}
           isAIMessageLoading={status === 'submitted'}
-          isExpanded={isExpanded}
+          isExpanded={isMobileModal ? true : isExpanded}
         />
         <Form
           handleSubmit={handleSubmit}
@@ -69,4 +86,17 @@ export default function Page() {
       </div>
     </div>
   )
+
+  if (mounted && isExpanded && !isMobileModal) {
+    return (
+      <>
+        <div className="h-[500px] w-full opacity-0" aria-hidden="true" />
+        {createPortal(ChatContent, document.body)}
+      </>
+    )
+  }
+
+  return ChatContent
 }
+
+

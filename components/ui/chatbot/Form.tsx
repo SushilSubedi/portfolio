@@ -14,7 +14,7 @@ const Form: React.FC<FormProps> = ({
 }) => {
   return (
     <form onSubmit={handleSubmit} className="mt-4">
-      <div className="flex items-end space-x-2 rounded-lg border border-zinc-200 bg-white/80 p-3 shadow-sm backdrop-blur-md dark:border-zinc-700 dark:bg-zinc-900/80 dark:backdrop-blur-md">
+      <div className="flex items-end space-x-2 rounded-lg border border-zinc-700/50 bg-zinc-900/60 p-3 shadow-lg backdrop-blur-xl">
         <textarea
           value={input}
           onChange={handleInputChange}
@@ -22,7 +22,7 @@ const Form: React.FC<FormProps> = ({
           placeholder="Ask about my tech stack, projects, or development experience..."
           rows={1}
           autoFocus
-          className="flex-1 resize-none bg-transparent text-sm text-zinc-900 placeholder-zinc-400 focus:outline-none dark:text-zinc-100 dark:placeholder-zinc-500"
+          className="flex-1 resize-none bg-transparent text-sm text-zinc-100 placeholder-zinc-500 focus:outline-none"
           style={{
             minHeight: '24px',
             maxHeight: '120px',
@@ -37,8 +37,8 @@ const Form: React.FC<FormProps> = ({
           type="submit"
           className={`flex items-center justify-center rounded-md p-2 transition-all duration-200 ${
             status === 'submitted' || !input.trim()
-              ? 'cursor-not-allowed bg-zinc-200 text-zinc-400 dark:bg-zinc-700 dark:text-zinc-500'
-              : 'bg-zinc-800 text-white hover:bg-zinc-700 dark:bg-zinc-200 dark:text-zinc-900 dark:hover:bg-zinc-300'
+              ? 'cursor-not-allowed bg-zinc-700/50 text-zinc-500'
+              : 'bg-blue-600 text-white hover:bg-blue-700'
           }`}
           disabled={status === 'submitted' || !input.trim()}
         >
