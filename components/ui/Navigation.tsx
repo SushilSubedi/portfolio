@@ -73,7 +73,7 @@ const Navigation = () => {
     >
       <nav
         className={cn(
-          'flex w-full max-w-5xl items-center justify-between rounded-2xl border px-4 py-3 shadow-lg transition-all duration-300',
+          'flex w-full max-w-7xl items-center justify-between rounded-2xl border px-4 py-3 shadow-lg transition-all duration-300',
           isUtilityPage
             ? 'border-zinc-700/70 bg-zinc-900/95 backdrop-blur-xl'
             : 'border-zinc-200/50 bg-white/80 backdrop-blur-md dark:border-zinc-800/50 dark:bg-zinc-900/80',

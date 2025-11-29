@@ -53,7 +53,7 @@ export default function Page({ isMobileModal = false }: ChatBotProps) {
       className={`rounded-lg shadow-lg transition-all duration-300 ${
         isExpanded && !isMobileModal
           ? 'fixed inset-4 z-[100] flex flex-col bg-zinc-900/95 shadow-2xl backdrop-blur-xl'
-          : 'relative flex h-[500px] w-full flex-col'
+          : 'relative flex h-[450px] w-full flex-col xl:h-[500px]'
       }`}
     >
       <div className="relative flex h-full w-full flex-col">
@@ -90,7 +90,7 @@ export default function Page({ isMobileModal = false }: ChatBotProps) {
   if (mounted && isExpanded && !isMobileModal) {
     return (
       <>
-        <div className="h-[500px] w-full opacity-0" aria-hidden="true" />
+        <div className="h-[450px] w-full opacity-0 xl:h-[500px]" aria-hidden="true" />
         {createPortal(ChatContent, document.body)}
       </>
     )

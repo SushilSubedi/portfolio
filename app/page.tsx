@@ -34,7 +34,7 @@ export default function Home() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.5, delay: 0.3 }}
-                    className="text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl"
+                    className="text-3xl font-bold tracking-tight sm:text-5xl lg:text-6xl xl:text-7xl"
                   >
                     <span className="block text-zinc-100">Crafting</span>
                     <span className="bg-gradient-to-r from-zinc-100 to-zinc-500 bg-clip-text text-transparent">
