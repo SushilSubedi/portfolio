@@ -3,6 +3,7 @@
 import { Briefcase, MapPin } from 'lucide-react'
 import ChatBotClient from '@/components/ChatBotClient'
 import Navigation from '@/components/ui/Navigation'
+import FloatingParticles from '@/components/FloatingParticles'
 import { motion } from 'framer-motion'
 
 export default function Home() {
@@ -11,20 +12,23 @@ export default function Home() {
       <Navigation />
 
       <main className="relative flex flex-1 flex-col">
-        <section className="flex flex-1 items-center justify-center px-2 sm:px-6 lg:px-8">
-          <div className="mx-auto w-full max-w-6xl">
+        <section className="relative flex flex-1 items-center justify-center overflow-hidden px-2 sm:px-6 lg:px-8">
+          {/* Floating Particles Background */}
+          <FloatingParticles />
+          
+          <div className="relative z-10 mx-auto w-full max-w-6xl">
             <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-center">
               {/* Left side - Hero content */}
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
                 className="space-y-8 text-center lg:text-left"
               >
                 <div className="space-y-6">
                   <motion.h1
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
                     transition={{ duration: 0.5, delay: 0.3 }}
                     className="text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl"
                   >
@@ -34,8 +38,8 @@ export default function Home() {
                     </span>
                   </motion.h1>
                   <motion.p
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
                     transition={{ duration: 0.5, delay: 0.4 }}
                     className="mx-auto max-w-2xl text-lg leading-8 text-zinc-400 lg:mx-0"
                   >
@@ -46,8 +50,8 @@ export default function Home() {
                 </div>
 
                 <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
                   transition={{ duration: 0.5, delay: 0.5 }}
                   className="flex flex-col items-center justify-center gap-4 text-sm text-zinc-500 sm:flex-row lg:justify-start"
                 >
